@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="BonnyRigg Business Solutions Reversed Logo">
+  <title>BonnyRigg Business Solutions — Reversed Logo for Dark Backgrounds</title>
+  <defs>
+    <linearGradient id="brr-gold" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E59310"/>
+      <stop offset="55%" stop-color="#F4A81C"/>
+      <stop offset="100%" stop-color="#FFC547"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(8, 2)">
+    <path d="M52 14 H104 C126 14 140 27 140 46 C140 53 138 59 134 64 L112 64 C117 59 120 53 120 46 C120 36 113 31 101 31 H72 V68 L52 76 Z" fill="#FFFFFF"/>
+    <path d="M52 88 L72 79 V126 H52 Z" fill="#FFFFFF"/>
+    <path d="M84 74 L106 70 L146 126 H120 L84 79 Z" fill="#FFFFFF"/>
+    <path d="M12 118 C42 74 96 48 142 52 C164 54 174 68 166 84 C160 96 146 104 130 107 L124 94 C137 91 146 85 148 77 C150 69 142 64 128 65 C90 67 48 87 12 118 Z" fill="url(#brr-gold)"/>
+  </g>
+
+  <text x="195" y="76" fill="#FFFFFF" font-family="'Montserrat', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="60" letter-spacing="-1">BonnyRigg</text>
+
+  <rect x="196" y="101" width="32" height="4" rx="2" fill="#F4A81C"/>
+  <text x="366" y="109" text-anchor="middle" fill="#FFFFFF" font-family="'Montserrat', 'Segoe UI', Arial, sans-serif" font-weight="600" font-size="18" letter-spacing="3.5">BUSINESS SOLUTIONS</text>
+  <rect x="504" y="101" width="32" height="4" rx="2" fill="#F4A81C"/>
+</svg>
