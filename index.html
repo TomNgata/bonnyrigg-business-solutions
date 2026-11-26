@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BonnyRigg Business Solutions — Kenya’s Price-Matched Lead Generation Marketplace</title>
-  <meta name="description" content="Connect with vetted Kenyan service providers within your budget. Service providers top up via M-Pesa (KES 600 minimum) and unlock qualified, price-matched client leads for KES 200 each.">
+  <meta name="description" content="Connect with vetted Kenyan service providers matched to your exact budget. Clients post jobs free; providers load their M-Pesa wallet from KES 600 and unlock qualified leads at KES 200 each.">
   <link rel="icon" type="image/svg+xml" href="assets/bonnyrigg-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,24 +27,52 @@
   <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="#top" class="nav-logo" aria-label="BonnyRigg Business Solutions">
+      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions Home">
         <img src="assets/bonnyrigg-logo-primary.svg" alt="BonnyRigg Business Solutions">
       </a>
 
       <nav class="nav-links" aria-label="Primary Navigation">
-        <a href="#marketplace">Marketplace</a>
-        <a href="#how-it-works">Why BonnyRigg</a>
-        <a href="#why-join">Pricing &amp; Wallets</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
       <div class="nav-actions">
-        <button type="button" class="btn btn-outline" id="jumpConsumerBtn">Post a Service Request</button>
-        <button type="button" class="btn btn-gold" id="jumpProviderBtn">Service Provider Wallet</button>
+        <a href="post-job.html" class="btn btn-outline">Post a Job</a>
+        <a href="provider-portal.html" class="btn btn-gold">Provider Portal</a>
+      </div>
+
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="container">
+        <nav class="mobile-nav-links" aria-label="Mobile Navigation">
+          <a href="index.html" class="active">Home</a>
+          <a href="services.html">Services Directory</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="pricing.html">Pricing &amp; Wallets</a>
+          <a href="about.html">About BonnyRigg</a>
+          <a href="contact.html">Contact Support</a>
+        </nav>
+        <div class="mobile-nav-actions">
+          <a href="post-job.html" class="btn btn-outline">Post a Service Request (Free)</a>
+          <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal &amp; Wallet</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <!-- Hero -->
     <section class="hero">
       <div class="container hero-grid">
@@ -52,11 +80,11 @@
           <div class="eyebrow">Kenya’s Two-Sided Service Lead Marketplace</div>
           <h1>Quality Leads Matched to <span>Your Exact Price Point.</span></h1>
           <p class="hero-lead">
-            Clients post the exact service they need—from legal counsel and auto mechanics to accounting and plumbing—alongside their budget. Vetted business service providers load their M-Pesa wallet and unlock only the leads that match their pricing floor.
+            Clients post the exact service they need—from legal counsel and auto mechanics to accounting and plumbing—alongside their budget. Vetted Kenyan service providers load their M-Pesa wallet and unlock only the leads that match their pricing floor.
           </p>
           <div class="hero-cta">
-            <button type="button" class="btn btn-gold" id="heroConsumerBtn">I Need a Service (Post a Job Free)</button>
-            <button type="button" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.5);" id="heroProviderBtn">I’m a Service Provider (Open Wallet)</button>
+            <a href="post-job.html" class="btn btn-gold">I Need a Service (Post a Job Free)</a>
+            <a href="provider-portal.html" class="btn btn-outline-light">I’m a Service Provider (Open Wallet)</a>
           </div>
           <div class="economics-strip">
             <div class="econ-stat">
@@ -83,241 +111,197 @@
             <div class="step-badge">1</div>
             <div>
               <strong>Public Posts a Job + Budget</strong>
-              <span>e.g. "Land conveyance advocate in Kilimani — Budget: KES 45,000" or "Gearbox repair in Westlands — Budget: KES 18,000".</span>
+              <span>e.g. "Land conveyance advocate in Kilimani — Budget: KES 45,000" or "Gearbox repair in Westlands — Budget: KES 22,000".</span>
             </div>
           </div>
           <div class="flow-step">
             <div class="step-badge">2</div>
             <div>
               <strong>Price-Point Engine Filters Providers</strong>
-              <span>Providers only see jobs at or above their pre-set minimum price point—zero time wasted on under-budget inquiries.</span>
+              <span>Providers only see jobs at or above their pre-set minimum price floor—zero time wasted on under-budget inquiries.</span>
             </div>
           </div>
-          <div class="flow-step" style="margin-bottom:0;">
+          <div class="flow-step" style="margin-bottom:1rem;">
             <div class="step-badge">3</div>
             <div>
               <strong>Instant M-Pesa Wallet Unlock (KES 200)</strong>
               <span>Providers onboard with KES 600 via M-Pesa (3 leads ready immediately) and tap to reveal verified client contact details.</span>
             </div>
           </div>
+          <a href="how-it-works.html" class="btn btn-ghost" style="width:100%;">Explore Full Matching Workflow →</a>
         </aside>
       </div>
     </section>
 
-    <!-- Interactive Two-Sided Marketplace Sandbox -->
-    <section class="band" id="marketplace">
+    <!-- Popular Service Categories Preview -->
+    <section class="band">
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="eyebrow-light">Two-Sided Service Marketplace</span>
-            <h2>Post a Job or Unlock Qualified Leads</h2>
+            <span class="eyebrow-light">Service Verticals</span>
+            <h2>Find Vetted Experts Across Key Kenyan Sectors</h2>
           </div>
-          <p>Clients post their service needs and budget for free. Verified service providers manage their M-Pesa wallet, set their minimum accepted job budget, and unlock ready-to-hire leads at KES 200 each.</p>
-        </div>
-
-        <div class="mode-tabs" role="tablist" aria-label="Marketplace Mode Switcher">
-          <button type="button" class="mode-tab active" data-mode="provider" role="tab" aria-selected="true">
-            Service Provider Dashboard &amp; M-Pesa Wallet
-          </button>
-          <button type="button" class="mode-tab" data-mode="consumer" role="tab" aria-selected="false">
-            General Public — Post a Job / Service Request
-          </button>
-        </div>
-
-        <!-- TAB 1: SERVICE PROVIDER DASHBOARD -->
-        <div class="sandbox-panel active" id="panel-provider">
-          <div class="market-grid">
-            <div>
-              <!-- M-Pesa Wallet -->
-              <div class="wallet-card">
-                <div class="wallet-top">
-                  <div>
-                    <div style="font-size:0.76rem;text-transform:uppercase;letter-spacing:0.08em;opacity:0.8;">Provider Lead Wallet Balance</div>
-                    <div class="wallet-balance" id="walletBalance">KES 600</div>
-                    <div style="font-size:0.8rem;opacity:0.82;margin-top:0.25rem;" id="leadsRemainingText">3 qualified leads available (KES 200 / lead)</div>
-                  </div>
-                  <span class="mpesa-chip">M-Pesa Connected</span>
-                </div>
-
-                <div style="font-size:0.82rem;opacity:0.88;padding:0.7rem 0.9rem;background:rgba(255,255,255,0.08);border-radius:10px;">
-                  <strong>Onboarding Rule:</strong> Minimum deposit of <strong>KES 600</strong> activates your provider profile. Each unlocked lead deducts <strong>KES 200</strong> automatically.
-                </div>
-
-                <div class="wallet-actions">
-                  <button type="button" class="btn btn-mpesa topup-btn" data-amount="600">+ Top Up KES 600 (M-Pesa)</button>
-                  <button type="button" class="btn btn-gold topup-btn" data-amount="1000">+ Top Up KES 1,000</button>
-                  <button type="button" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.4);" id="resetDemoBtn">Refresh Balance</button>
-                </div>
-              </div>
-
-              <!-- Provider Price-Point & Category Filter -->
-              <div class="price-band-box">
-                <h3 style="font-family:var(--font-heading);font-size:1.05rem;color:var(--br-blue);margin:0 0 0.25rem;">Your Matching Preferences</h3>
-                <p style="font-size:0.83rem;color:var(--br-slate);margin:0 0 1rem;">
-                  Set your service category and the minimum job budget you are willing to accept. Jobs below your floor are automatically muted.
-                </p>
-
-                <div class="field" style="margin-bottom:1rem;">
-                  <label for="providerCatFilter">Service Vertical</label>
-                  <select id="providerCatFilter">
-                    <option value="All">All Service Categories</option>
-                    <option value="Legal Services">Legal Services</option>
-                    <option value="Auto Mechanic">Auto Mechanic &amp; Fleet</option>
-                    <option value="Accounting & Tax">Accounting &amp; Tax</option>
-                    <option value="Plumbing & Electrical">Plumbing &amp; Electrical</option>
-                    <option value="Business Consulting">Business &amp; HR Advisory</option>
-                  </select>
-                </div>
-
-                <div class="field">
-                  <div class="range-row">
-                    <label for="minBudgetRange" style="margin:0;">Minimum Job Budget Accepted</label>
-                    <strong style="font-family:var(--font-heading);color:var(--br-blue);font-size:0.95rem;" id="minBudgetLabel">KES 10,000</strong>
-                  </div>
-                  <input type="range" id="minBudgetRange" min="2000" max="50000" step="2000" value="10000">
-                  <div style="display:flex;justify-content:space-between;font-size:0.74rem;color:var(--br-slate);margin-top:0.2rem;">
-                    <span>KES 2,000</span>
-                    <span>KES 25,000</span>
-                    <span>KES 50,000+</span>
-                  </div>
-                </div>
-
-                <div style="margin-top:1.1rem;padding-top:0.9rem;border-top:1px solid var(--br-border);display:flex;justify-content:space-between;font-size:0.84rem;">
-                  <span style="color:var(--br-slate);">Matched Jobs in Your Band:</span>
-                  <strong style="color:var(--br-blue);" id="matchedCountLabel">0 leads</strong>
-                </div>
-              </div>
-            </div>
-
-            <!-- Live Matched Leads Column -->
-            <div>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.9rem;">
-                <h3 style="font-family:var(--font-heading);font-size:1.15rem;color:var(--br-blue);margin:0;">Incoming Client Leads</h3>
-                <span style="font-size:0.8rem;color:var(--br-slate);">Unlock verified client contacts for <strong>KES 200</strong> per lead</span>
-              </div>
-              <div class="leads-list" id="leadsList"></div>
-            </div>
+          <div>
+            <p style="margin-bottom:0.8rem;">Browse active service categories across Nairobi and Kenya. Post a request in seconds or filter matched client budgets in the Provider Portal.</p>
+            <a href="services.html" class="btn btn-outline btn-sm">Browse All 8 Categories →</a>
           </div>
         </div>
 
-        <!-- TAB 2: CONSUMER JOB POSTING -->
-        <div class="sandbox-panel" id="panel-consumer">
-          <div class="market-grid">
-            <div class="panel-card">
-              <h3>Post a Job or Service You Need</h3>
-              <p style="font-size:0.88rem;color:var(--br-slate);margin:0;">
-                Tell us what you need and what you are willing to pay. BonnyRigg instantly matches you with vetted Nairobi service providers who accept your budget—completely free for the public.
-              </p>
-
-              <form id="postJobForm" class="form-stack">
-                <div class="form-2col">
-                  <div class="field">
-                    <label for="jobCategory">Service Category</label>
-                    <select id="jobCategory" required>
-                      <option value="Legal Services">Legal Services</option>
-                      <option value="Auto Mechanic">Auto Mechanic &amp; Fleet</option>
-                      <option value="Accounting & Tax">Accounting &amp; Tax</option>
-                      <option value="Plumbing & Electrical">Plumbing &amp; Electrical</option>
-                      <option value="Business Consulting">Business &amp; HR Advisory</option>
-                    </select>
-                  </div>
-
-                  <div class="field">
-                    <label for="jobLocation">Location / Area</label>
-                    <input type="text" id="jobLocation" required placeholder="e.g. Westlands, Kilimani, Kiambu Rd">
-                  </div>
-                </div>
-
-                <div class="field">
-                  <label for="jobTitle">Brief Job Title</label>
-                  <input type="text" id="jobTitle" required placeholder="e.g. Company Registration &amp; Shareholders Agreement">
-                </div>
-
-                <div class="form-2col">
-                  <div class="field">
-                    <label for="jobBudget">Your Willingness-to-Pay Budget (KES)</label>
-                    <input type="number" id="jobBudget" min="1500" step="500" value="25000" required>
-                  </div>
-                  <div class="field">
-                    <label for="jobUrgency">Timeline</label>
-                    <select id="jobUrgency">
-                      <option value="Urgent (Within 24 hrs)">Urgent (Within 24 hrs)</option>
-                      <option value="This Week">This Week</option>
-                      <option value="Within 2 Weeks">Within 2 Weeks</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-2col">
-                  <div class="field">
-                    <label for="clientName">Your Name</label>
-                    <input type="text" id="clientName" required placeholder="e.g. David Mwangi">
-                  </div>
-                  <div class="field">
-                    <label for="clientPhone">Phone / WhatsApp (Masked until Unlocked)</label>
-                    <input type="tel" id="clientPhone" required placeholder="+254 7XX XXX XXX">
-                  </div>
-                </div>
-
-                <div class="field">
-                  <label for="jobDesc">Scope &amp; Requirements</label>
-                  <textarea id="jobDesc" rows="3" required placeholder="Describe the job clearly so qualified providers can quote accurately..."></textarea>
-                </div>
-
-                <div class="match-preview-box" id="consumerMatchPreview">
-                  <strong>Live Match Estimate:</strong> Posting a <strong>KES 25,000</strong> job in <strong>Legal Services</strong> matches vetted providers accepting jobs from KES 10,000+.
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width:100%;">Post Job Free &amp; Match Providers</button>
-              </form>
+        <div class="grid-4">
+          <article class="cat-card">
+            <div>
+              <div class="cat-card-top">
+                <div class="cat-icon">LS</div>
+                <span class="cat-badge" data-cat-count="Legal Services">1 open request</span>
+              </div>
+              <h3>Legal Services</h3>
+              <p>Conveyancing, commercial leases, company registration, and contract drafting.</p>
             </div>
+            <div>
+              <div class="cat-budget-line">Typical budgets: KES 15k – 120k</div>
+              <div class="cat-actions" style="margin-top:0.75rem;">
+                <a href="post-job.html?category=Legal%20Services" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+                <a href="provider-portal.html?category=Legal%20Services" class="btn btn-ghost btn-sm">Leads</a>
+              </div>
+            </div>
+          </article>
 
-            <div class="panel-card" style="background:var(--br-soft-white);">
-              <h3>Why Clients Trust BonnyRigg</h3>
-              <p style="font-size:0.88rem;color:var(--br-slate);margin:0 0 1.15rem;">
-                No endless cold calls or inflated surprise quotes. Your budget is upfront, and only verified providers ready to work at your price point can unlock your inquiry.
+          <article class="cat-card">
+            <div>
+              <div class="cat-card-top">
+                <div class="cat-icon">AM</div>
+                <span class="cat-badge" data-cat-count="Auto Mechanic">2 open requests</span>
+              </div>
+              <h3>Auto Mechanic &amp; Fleet</h3>
+              <p>Engine diagnostics, gearbox repair, fleet maintenance, and pre-purchase checks.</p>
+            </div>
+            <div>
+              <div class="cat-budget-line">Typical budgets: KES 6k – 65k</div>
+              <div class="cat-actions" style="margin-top:0.75rem;">
+                <a href="post-job.html?category=Auto%20Mechanic" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+                <a href="provider-portal.html?category=Auto%20Mechanic" class="btn btn-ghost btn-sm">Leads</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cat-card">
+            <div>
+              <div class="cat-card-top">
+                <div class="cat-icon">AT</div>
+                <span class="cat-badge" data-cat-count="Accounting & Tax">1 open request</span>
+              </div>
+              <h3>Accounting &amp; Tax</h3>
+              <p>KRA tax returns, eTIMS onboarding, payroll compliance, and SME audits.</p>
+            </div>
+            <div>
+              <div class="cat-budget-line">Typical budgets: KES 12k – 85k</div>
+              <div class="cat-actions" style="margin-top:0.75rem;">
+                <a href="post-job.html?category=Accounting%20%26%20Tax" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+                <a href="provider-portal.html?category=Accounting%20%26%20Tax" class="btn btn-ghost btn-sm">Leads</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="cat-card">
+            <div>
+              <div class="cat-card-top">
+                <div class="cat-icon">PE</div>
+                <span class="cat-badge" data-cat-count="Plumbing & Electrical">1 open request</span>
+              </div>
+              <h3>Plumbing &amp; Electrical</h3>
+              <p>Solar water heaters, backup inverters, commercial wiring, and emergency repairs.</p>
+            </div>
+            <div>
+              <div class="cat-budget-line">Typical budgets: KES 5k – 50k</div>
+              <div class="cat-actions" style="margin-top:0.75rem;">
+                <a href="post-job.html?category=Plumbing%20%26%20Electrical" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+                <a href="provider-portal.html?category=Plumbing%20%26%20Electrical" class="btn btn-ghost btn-sm">Leads</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two Sides of the Marketplace -->
+    <section class="band white">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow-light">Built for Both Sides</span>
+            <h2>One Marketplace. Zero Budget Mismatches.</h2>
+          </div>
+          <p>Whether you are hiring a trusted professional or growing a Kenyan service business, BonnyRigg aligns budget expectations before the first call is made.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="role-card light">
+            <div>
+              <span class="eyebrow-light">For Clients &amp; Businesses Hiring</span>
+              <h3 style="color:var(--br-blue);">Post Your Job &amp; Budget for Free</h3>
+              <p style="font-size:0.9rem;color:var(--br-slate);margin:0;">
+                Skip cold calling and guesswork quotes. State what you need, your location, and what you are willing to pay—then hear only from vetted pros ready to deliver.
               </p>
+              <ul class="check-list">
+                <li>100% free forever for individuals and corporate buyers</li>
+                <li>Phone number stays masked until a qualified provider unlocks your lead</li>
+                <li>Every responding provider commits KES 200—eliminating spam inquiries</li>
+                <li>Fast Nairobi &amp; nationwide matching across 8 core service verticals</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <a href="post-job.html" class="btn btn-primary">Post a Service Request Free</a>
+              <a href="how-it-works.html#clients" class="btn btn-ghost">How Client Matching Works</a>
+            </div>
+          </div>
 
-              <div class="flow-step">
-                <div class="step-badge" style="background:var(--br-gold);color:var(--br-blue-deep);">✓</div>
-                <div>
-                  <strong>Free for the General Public</strong>
-                  <span>Post legal, automotive, home repair, or business requests in under 60 seconds at zero cost.</span>
-                </div>
-              </div>
-
-              <div class="flow-step">
-                <div class="step-badge" style="background:var(--br-gold);color:var(--br-blue-deep);">✓</div>
-                <div>
-                  <strong>Budget Transparency Upfront</strong>
-                  <span>Because you state your willingness-to-pay budget first, matched providers arrive ready to deliver within range.</span>
-                </div>
-              </div>
-
-              <div class="flow-step" style="margin-bottom:1.25rem;">
-                <div class="step-badge" style="background:var(--br-gold);color:var(--br-blue-deep);">✓</div>
-                <div>
-                  <strong>Serious, Wallet-Backed Providers Only</strong>
-                  <span>Every provider commits KES 200 from their M-Pesa wallet to reach you—filtering out spam and time-wasters.</span>
-                </div>
-              </div>
-
-              <div style="background:var(--br-white);border:1px solid var(--br-border);border-radius:var(--radius-sm);padding:1rem;">
-                <strong style="display:block;font-family:var(--font-heading);font-size:0.86rem;color:var(--br-blue);margin-bottom:0.35rem;">Fast Nairobi &amp; Kenya-Wide Matching</strong>
-                <span style="font-size:0.83rem;color:var(--br-slate);">Your phone number remains masked until a verified service provider within your price range unlocks your request to send a quote.</span>
-              </div>
+          <div class="role-card dark">
+            <div>
+              <span class="eyebrow" style="margin-bottom:0;">For Kenyan Service Providers</span>
+              <h3 style="color:#fff;">Load via M-Pesa. Unlock Only Matched Leads.</h3>
+              <p style="font-size:0.9rem;color:rgba(255,255,255,0.84);margin:0;">
+                Stop paying fixed monthly retainers for unqualified clicks. Set your minimum job budget floor and pay a flat KES 200 only when you choose to unlock a verified client contact.
+              </p>
+              <ul class="check-list">
+                <li>Start with a KES 600 M-Pesa deposit (3 ready-to-unlock leads included)</li>
+                <li>Set your minimum job budget floor so under-budget jobs stay muted</li>
+                <li>Transparent KES 200 flat fee per unlocked lead—credits never expire</li>
+                <li>Instant WhatsApp &amp; phone details revealed upon unlock</li>
+              </ul>
+            </div>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+              <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal &amp; Wallet</a>
+              <a href="pricing.html" class="btn btn-outline-light">See Pricing &amp; ROI Calculator</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 4 Brand Pillars with Recreated Crisp Vector Icons -->
-    <section class="band white" id="how-it-works">
+    <!-- Live Marketplace Pulse -->
+    <section class="band">
       <div class="container">
         <div class="section-header">
           <div>
-            <span class="eyebrow-light">Our Core Pillars</span>
+            <span class="eyebrow-light">Live Client Demand</span>
+            <h2>Recent Service Requests in Nairobi</h2>
+          </div>
+          <div>
+            <p style="margin-bottom:0.8rem;">Real-time snapshot of client jobs with stated budgets. Providers can filter by category and price floor inside the Provider Portal.</p>
+            <a href="provider-portal.html" class="btn btn-primary btn-sm">View Full Lead Queue →</a>
+          </div>
+        </div>
+
+        <div class="grid-3" id="homeLeadsPulse"></div>
+      </div>
+    </section>
+
+    <!-- 4 Brand Pillars -->
+    <section class="band white">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow-light">Why BonnyRigg</span>
             <h2>Built for Serious Kenyan Service Businesses</h2>
           </div>
           <p>BonnyRigg Business Solutions combines transparent pricing, M-Pesa convenience, and disciplined lead qualification so both clients and professionals win.</p>
@@ -353,37 +337,23 @@
               <img src="assets/icon-results.svg" alt="Results and Impact Icon">
             </div>
             <h3>Results &amp; Impact</h3>
-            <p>Higher close rates from day one—no competing against mismatch budgets, just high-intent clients ready to hire.</p>
+            <p>Higher close rates from day one—no competing against mismatched budgets, just high-intent clients ready to hire.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Simple Transparent Pricing & M-Pesa Wallet -->
-    <section class="band" id="why-join">
+    <!-- Conversion CTA Band -->
+    <section class="band">
       <div class="container">
-        <div class="section-header">
+        <div class="cta-banner">
           <div>
-            <span class="eyebrow-light">Transparent Pay-Per-Lead Pricing</span>
-            <h2>No Monthly Retainers. Pay Only for Matched Leads.</h2>
+            <h2>Ready to Hire or Grow Your Service Pipeline?</h2>
+            <p>Post a client request for free in under 60 seconds, or activate your M-Pesa provider wallet from KES 600 and start unlocking price-matched leads today.</p>
           </div>
-          <p>Load your provider wallet via M-Pesa starting at KES 600 and use your credits whenever a client posts a job that fits your category and minimum budget.</p>
-        </div>
-
-        <div class="brand-grid">
-          <div class="logo-preview-box light" style="align-items:start;text-align:left;">
-            <span class="eyebrow-light">For the General Public</span>
-            <h3 style="font-family:var(--font-heading);color:var(--br-blue);margin:0;font-size:1.35rem;">KES 0 — Free Forever</h3>
-            <p style="font-size:0.88rem;color:var(--br-slate);margin:0;">
-              Post legal, automotive, accounting, electrical, plumbing, or consulting jobs with your budget and hear only from serious, wallet-backed Kenyan service providers ready to work within your range.
-            </p>
-          </div>
-          <div class="logo-preview-box dark" style="align-items:start;text-align:left;">
-            <span class="eyebrow" style="margin-bottom:0;">For Service Providers</span>
-            <h3 style="font-family:var(--font-heading);color:#fff;margin:0;font-size:1.35rem;">KES 600 Starter Wallet · KES 200 / Lead</h3>
-            <p style="font-size:0.88rem;color:rgba(255,255,255,0.85);margin:0;">
-              Activate your business account with a KES 600 M-Pesa deposit (enough for 3 immediate leads), set your minimum price floor, and unlock verified client contacts at KES 200 per lead.
-            </p>
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <a href="post-job.html" class="btn btn-gold">Post a Job Free</a>
+            <a href="provider-portal.html" class="btn btn-outline-light">Open Provider Wallet</a>
           </div>
         </div>
       </div>
@@ -395,29 +365,39 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:48px;width:auto;margin-bottom:0.9rem;">
-          <p style="font-size:0.86rem;margin:0;color:rgba(255,255,255,0.76);">
-            Kenya’s price-matched two-sided lead generation marketplace—connecting verified business service providers with ready-to-hire clients via M-Pesa wallets.
+          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:46px;width:auto;margin-bottom:0.9rem;">
+          <p style="font-size:0.85rem;margin:0;color:rgba(255,255,255,0.76);">
+            Kenya’s price-matched two-sided lead generation marketplace—connecting vetted business service providers with ready-to-hire clients via M-Pesa wallets.
           </p>
         </div>
 
         <div>
           <h4>Marketplace</h4>
           <ul>
-            <li>Minimum M-Pesa Wallet Deposit: KES 600</li>
-            <li>Cost Per Unlocked Lead: KES 200</li>
-            <li>Public Job Posting: 100% Free</li>
-            <li>Smart Minimum Price-Point Filtering</li>
+            <li><a href="post-job.html">Post a Service Request</a></li>
+            <li><a href="provider-portal.html">Service Provider Portal</a></li>
+            <li><a href="services.html">Service Categories</a></li>
+            <li><a href="pricing.html">Pricing &amp; ROI Calculator</a></li>
           </ul>
         </div>
 
         <div>
-          <h4>Contact</h4>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="how-it-works.html">How Matching Works</a></li>
+            <li><a href="about.html">About BonnyRigg</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+            <li><a href="pricing.html#faq">Wallet &amp; Billing FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Nairobi Desk</h4>
           <ul>
             <li>Nairobi, Kenya</li>
             <li>info@bonnyrigg.co.ke</li>
             <li>www.bonnyrigg.co.ke</li>
-            <li>M-Pesa Paybill &amp; Instant Lead Alerts</li>
+            <li>M-Pesa Paybill · Mon–Sat 8am–6pm</li>
           </ul>
         </div>
       </div>
@@ -430,7 +410,6 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Service Provider Portal &amp; M-Pesa Lead Wallet — BonnyRigg Business Solutions</title>
+  <meta name="description" content="Manage your BonnyRigg M-Pesa lead wallet, set your minimum job budget floor, and unlock verified, price-matched client leads across Kenya for KES 200 each.">
+  <link rel="icon" type="image/svg+xml" href="assets/bonnyrigg-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="top-notice">
+    <div class="container">
+      <div class="notice-badge">
+        <span class="pulse-dot"></span>
+        <span>Service Provider Workspace · M-Pesa Wallet Minimum KES 600 · KES 200 / Lead</span>
+      </div>
+      <span>Looking to hire a pro? <a href="post-job.html" style="color:var(--br-gold);text-decoration:underline;">Post a Service Request Free</a></span>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions Home">
+        <img src="assets/bonnyrigg-logo-primary.svg" alt="BonnyRigg Business Solutions">
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="post-job.html" class="btn btn-outline">Post a Job</a>
+        <a href="provider-portal.html" class="btn btn-gold">Provider Portal</a>
+      </div>
+
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="container">
+        <nav class="mobile-nav-links" aria-label="Mobile Navigation">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services Directory</a>
+          <a href="how-it-works.html">How It Works</a>
+          <a href="pricing.html">Pricing &amp; Wallets</a>
+          <a href="about.html">About BonnyRigg</a>
+          <a href="contact.html">Contact Support</a>
+        </nav>
+        <div class="mobile-nav-actions">
+          <a href="post-job.html" class="btn btn-outline">Post a Service Request (Free)</a>
+          <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal &amp; Wallet</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-hero-grid">
+        <div>
+          <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Provider Portal</span>
+          </div>
+          <div class="eyebrow">Supply-Side Lead Workspace</div>
+          <h1>Provider Portal &amp; <span>M-Pesa Lead Wallet</span></h1>
+          <p class="page-hero-lead">
+            Filter live Kenyan client requests by service vertical and your minimum accepted job budget. Top up via M-Pesa and unlock verified client contacts at a flat KES 200 per lead.
+          </p>
+        </div>
+
+        <div class="hero-summary-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;margin-bottom:0.4rem;">
+            <strong id="providerBusinessLabel" style="margin:0;">Verified Nairobi Provider</strong>
+            <span class="live-pill">Active</span>
+          </div>
+          <p style="margin-bottom:0.85rem;">Customize your business profile, service vertical, and minimum job floor anytime.</p>
+          <button type="button" class="btn btn-gold btn-sm" id="openProviderModalBtn">Register / Edit Provider Profile</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="container">
+        <div class="market-grid">
+          <!-- Left Column: Wallet, Price Floor Controls, Ledger -->
+          <div>
+            <!-- M-Pesa Wallet -->
+            <div class="wallet-card">
+              <div class="wallet-top">
+                <div>
+                  <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;opacity:0.82;">Provider Lead Wallet Balance</div>
+                  <div class="wallet-balance" id="walletBalance">KES 600</div>
+                  <div style="font-size:0.8rem;opacity:0.84;margin-top:0.25rem;" id="leadsRemainingText">3 qualified leads available (KES 200 / lead)</div>
+                </div>
+                <span class="mpesa-chip">M-Pesa Connected</span>
+              </div>
+
+              <div style="font-size:0.81rem;opacity:0.9;padding:0.7rem 0.9rem;background:rgba(255,255,255,0.08);border-radius:10px;">
+                <strong>Wallet Terms:</strong> Minimum onboarding deposit of <strong>KES 600</strong> activates your profile. Every unlocked lead deducts <strong>KES 200</strong> automatically. Unused balance never expires.
+              </div>
+
+              <div class="wallet-actions">
+                <button type="button" class="btn btn-mpesa topup-btn" data-amount="600">+ Top Up KES 600</button>
+                <button type="button" class="btn btn-gold topup-btn" data-amount="1000">+ Top Up KES 1,000</button>
+                <button type="button" class="btn btn-outline-light topup-btn" data-amount="2000">+ Top Up KES 2,000</button>
+              </div>
+            </div>
+
+            <!-- Matching Preferences -->
+            <div class="price-band-box">
+              <h3 style="font-family:var(--font-heading);font-size:1.05rem;color:var(--br-blue);margin:0 0 0.25rem;">Your Matching Preferences</h3>
+              <p style="font-size:0.83rem;color:var(--br-slate);margin:0 0 1rem;">
+                Choose your service vertical and minimum accepted job budget. Requests below your pricing floor are automatically muted.
+              </p>
+
+              <div class="field" style="margin-bottom:1rem;">
+                <label for="providerCatFilter">Service Vertical</label>
+                <select id="providerCatFilter">
+                  <option value="All">All Service Categories</option>
+                  <option value="Legal Services">Legal Services</option>
+                  <option value="Auto Mechanic">Auto Mechanic &amp; Fleet</option>
+                  <option value="Accounting & Tax">Accounting &amp; Tax</option>
+                  <option value="Plumbing & Electrical">Plumbing &amp; Electrical</option>
+                  <option value="Business Consulting">Business &amp; HR Advisory</option>
+                  <option value="Construction & Renovations">Construction &amp; Renovations</option>
+                  <option value="IT & Digital Systems">IT &amp; Digital Systems</option>
+                  <option value="Events & Logistics">Events &amp; Logistics</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="range-row">
+                  <label for="minBudgetRange" style="margin:0;">Minimum Job Budget Accepted</label>
+                  <strong style="font-family:var(--font-heading);color:var(--br-blue);font-size:0.95rem;" id="minBudgetLabel">KES 10,000</strong>
+                </div>
+                <input type="range" id="minBudgetRange" min="2000" max="50000" step="2000" value="10000">
+                <div style="display:flex;justify-content:space-between;font-size:0.74rem;color:var(--br-slate);margin-top:0.2rem;">
+                  <span>KES 2,000</span>
+                  <span>KES 25,000</span>
+                  <span>KES 50,000+</span>
+                </div>
+              </div>
+
+              <div style="margin-top:1rem;padding-top:0.85rem;border-top:1px solid var(--br-border);display:flex;justify-content:space-between;font-size:0.84rem;">
+                <span style="color:var(--br-slate);">Matched Jobs in Your Band:</span>
+                <strong style="color:var(--br-blue);" id="matchedCountLabel">0 leads</strong>
+              </div>
+            </div>
+
+            <!-- Wallet Activity Ledger -->
+            <div class="price-band-box" style="margin-bottom:0;">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
+                <h3 style="font-family:var(--font-heading);font-size:1rem;color:var(--br-blue);margin:0;">M-Pesa Wallet Activity</h3>
+                <button type="button" class="btn btn-ghost btn-sm" id="resetWalletBtn" style="padding:0.3rem 0.65rem;font-size:0.74rem;">Reset Balance</button>
+              </div>
+              <div class="ledger-list" id="walletLedger"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Search, Tabs & Incoming Client Leads -->
+          <div>
+            <div class="filter-bar">
+              <div class="pill-tabs" role="tablist" aria-label="Lead Status Filter">
+                <button type="button" class="pill-tab lead-status-tab active" data-status="all">All Leads</button>
+                <button type="button" class="pill-tab lead-status-tab" data-status="matched">Matched to Floor</button>
+                <button type="button" class="pill-tab lead-status-tab" data-status="unlocked">Unlocked Contacts</button>
+              </div>
+
+              <div class="field" style="min-width:220px;flex:1;max-width:300px;">
+                <input type="search" id="leadSearchInput" placeholder="Search by location, keyword…" aria-label="Search leads">
+              </div>
+            </div>
+
+            <div class="leads-list" id="leadsList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Provider Onboarding / Profile Modal -->
+  <div class="modal-backdrop" id="providerModal" role="dialog" aria-modal="true" aria-labelledby="providerModalTitle">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="providerModalTitle">Service Provider Account &amp; Preferences</h3>
+        <button type="button" class="modal-close" id="closeProviderModalBtn" aria-label="Close">&times;</button>
+      </div>
+      <p style="font-size:0.85rem;color:var(--br-slate);margin:0 0 1rem;">
+        Configure your business profile, primary vertical, and M-Pesa billing number to receive tailored Nairobi &amp; Kenya-wide lead alerts.
+      </p>
+      <form id="providerProfileForm" class="form-stack" style="margin-top:0;">
+        <div class="field">
+          <label for="profBusinessName">Business / Practice Name</label>
+          <input type="text" id="profBusinessName" required placeholder="e.g. Ridgeways Auto Diagnostics Ltd">
+        </div>
+
+        <div class="form-2col">
+          <div class="field">
+            <label for="profVertical">Primary Service Vertical</label>
+            <select id="profVertical">
+              <option value="All">All Service Categories</option>
+              <option value="Legal Services">Legal Services</option>
+              <option value="Auto Mechanic">Auto Mechanic &amp; Fleet</option>
+              <option value="Accounting & Tax">Accounting &amp; Tax</option>
+              <option value="Plumbing & Electrical">Plumbing &amp; Electrical</option>
+              <option value="Business Consulting">Business &amp; HR Advisory</option>
+              <option value="Construction & Renovations">Construction &amp; Renovations</option>
+              <option value="IT & Digital Systems">IT &amp; Digital Systems</option>
+              <option value="Events & Logistics">Events &amp; Logistics</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="profMinBudget">Minimum Job Budget Floor (KES)</label>
+            <input type="number" id="profMinBudget" min="2000" max="50000" step="2000" value="10000" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="profMpesaPhone">M-Pesa STK Push Number</label>
+          <input type="tel" id="profMpesaPhone" required placeholder="+254 7XX XXX XXX">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Provider Profile &amp; Apply Filter</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:46px;width:auto;margin-bottom:0.9rem;">
+          <p style="font-size:0.85rem;margin:0;color:rgba(255,255,255,0.76);">
+            Kenya’s price-matched two-sided lead generation marketplace—connecting vetted business service providers with ready-to-hire clients via M-Pesa wallets.
+          </p>
+        </div>
+
+        <div>
+          <h4>Marketplace</h4>
+          <ul>
+            <li><a href="post-job.html">Post a Service Request</a></li>
+            <li><a href="provider-portal.html">Service Provider Portal</a></li>
+            <li><a href="services.html">Service Categories</a></li>
+            <li><a href="pricing.html">Pricing &amp; ROI Calculator</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="how-it-works.html">How Matching Works</a></li>
+            <li><a href="about.html">About BonnyRigg</a></li>
+            <li><a href="contact.html">Contact &amp; Support</a></li>
+            <li><a href="pricing.html#faq">Wallet &amp; Billing FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Nairobi Desk</h4>
+          <ul>
+            <li>Nairobi, Kenya</li>
+            <li>info@bonnyrigg.co.ke</li>
+            <li>www.bonnyrigg.co.ke</li>
+            <li>M-Pesa Paybill · Mon–Sat 8am–6pm</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 BonnyRigg Business Solutions. All rights reserved.</span>
+        <span>Nairobi, Kenya · Strategy · Solutions · Growth · Impact</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
