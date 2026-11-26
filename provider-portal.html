@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Service Provider Portal &amp; M-Pesa Lead Wallet — BonnyRigg Business Solutions</title>
-  <meta name="description" content="Manage your BonnyRigg M-Pesa lead wallet, set your minimum job budget floor, and unlock verified, price-matched client leads across Kenya for KES 200 each.">
+  <title>Service Provider Login &amp; Portal — BonnyRigg Business Solutions</title>
+  <meta name="description" content="Sign in or create your verified Kenyan service provider account on BonnyRigg to manage your M-Pesa lead wallet, set your minimum job budget floor, and unlock price-matched client leads.">
   <link rel="icon" type="image/svg+xml" href="assets/bonnyrigg-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,7 @@
     <div class="container">
       <div class="notice-badge">
         <span class="pulse-dot"></span>
-        <span>Service Provider Workspace · M-Pesa Wallet Minimum KES 600 · KES 200 / Lead</span>
+        <span>Service Provider Portal · Verified Accounts Only · M-Pesa Wallet Enabled</span>
       </div>
       <span>Looking to hire a pro? <a href="post-job.html" style="color:var(--br-gold);text-decoration:underline;">Post a Service Request Free</a></span>
     </div>
@@ -40,7 +40,7 @@
 
       <div class="nav-actions">
         <a href="post-job.html" class="btn btn-outline">Post a Job</a>
-        <a href="provider-portal.html" class="btn btn-gold">Provider Portal</a>
+        <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
       </div>
 
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -64,7 +64,7 @@
         </nav>
         <div class="mobile-nav-actions">
           <a href="post-job.html" class="btn btn-outline">Post a Service Request (Free)</a>
-          <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal &amp; Wallet</a>
+          <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
         </div>
       </div>
     </div>
@@ -79,25 +79,185 @@
             <span>/</span>
             <span>Provider Portal</span>
           </div>
-          <div class="eyebrow">Supply-Side Lead Workspace</div>
-          <h1>Provider Portal &amp; <span>M-Pesa Lead Wallet</span></h1>
-          <p class="page-hero-lead">
-            Filter live Kenyan client requests by service vertical and your minimum accepted job budget. Top up via M-Pesa and unlock verified client contacts at a flat KES 200 per lead.
+          <div class="eyebrow">Supply-Side Partner Access</div>
+          <h1 id="providerHeroHeading">Service Provider <span>Sign In &amp; Registration</span></h1>
+          <p class="page-hero-lead" id="providerHeroLead">
+            Sign in to your verified provider account—or create one with a KES 600 M-Pesa starter wallet—to view live client leads matched to your exact price floor.
           </p>
         </div>
 
-        <div class="hero-summary-card">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;margin-bottom:0.4rem;">
+        <!-- Shown when Logged Out -->
+        <div class="hero-summary-card" id="providerHeroGateCard">
+          <strong>Private Lead &amp; Wallet Access</strong>
+          <p>M-Pesa wallet balances, transaction histories, and client contact details are strictly protected behind authenticated provider accounts.</p>
+        </div>
+
+        <!-- Shown when Logged In -->
+        <div class="hero-summary-card hidden-view" id="providerHeroAccountCard">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;margin-bottom:0.35rem;">
             <strong id="providerBusinessLabel" style="margin:0;">Verified Nairobi Provider</strong>
-            <span class="live-pill">Active</span>
+            <span class="live-pill">Signed In</span>
           </div>
-          <p style="margin-bottom:0.85rem;">Customize your business profile, service vertical, and minimum job floor anytime.</p>
-          <button type="button" class="btn btn-gold btn-sm" id="openProviderModalBtn">Register / Edit Provider Profile</button>
+          <p id="providerAccountMeta" style="margin-bottom:0.85rem;">+254 7XX XXX XXX · Floor: KES 10,000</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.55rem;">
+            <button type="button" class="btn btn-gold btn-sm" id="openProviderModalBtn">Edit Profile</button>
+            <button type="button" class="btn btn-outline-light btn-sm" id="providerSignOutBtn">Sign Out</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="band">
+    <!-- AUTHENTICATION GATE (DEFAULT PUBLIC VIEW) -->
+    <section class="band" id="providerAuthGate">
+      <div class="container auth-grid">
+        <!-- Left: Commercial Value & Market Pulse -->
+        <div>
+          <span class="eyebrow-light">Built for Kenyan Service Businesses</span>
+          <h2 style="font-family:var(--font-heading);font-size:clamp(1.5rem,2.7vw,2.1rem);color:var(--br-blue);margin:0.5rem 0 0.65rem;line-height:1.2;">
+            Unlock Verified, Budget-Matched Client Requests on Demand
+          </h2>
+          <p style="color:var(--br-slate);font-size:0.93rem;margin:0;">
+            Every BonnyRigg provider account includes an M-Pesa-funded lead wallet, automated minimum job price-floor filtering, and direct client phone/WhatsApp unlocks—with zero monthly retainers.
+          </p>
+
+          <div class="market-pulse-mini">
+            <div class="pulse-stat">
+              <strong id="gateOpenLeadsCount">9 Active Requests</strong>
+              <span>Live across 8 Kenyan service verticals</span>
+            </div>
+            <div class="pulse-stat">
+              <strong id="gateBudgetRange">KES 7k – KES 140k</strong>
+              <span>Current stated client budgets</span>
+            </div>
+            <div class="pulse-stat">
+              <strong>KES 600 Min.</strong>
+              <span>M-Pesa opening deposit (3 leads)</span>
+            </div>
+            <div class="pulse-stat">
+              <strong>KES 200 Flat</strong>
+              <span>Per unlocked lead · Zero commission</span>
+            </div>
+          </div>
+
+          <div class="panel-card" style="background:var(--br-white);padding:1.35rem;">
+            <h3 style="font-size:1rem;margin-bottom:0.65rem;">What You Unlock Inside Your Dashboard</h3>
+            <ul class="check-list" style="margin:0;">
+              <li>M-Pesa wallet balance, instant STK Push top-ups, and full transaction ledger</li>
+              <li>Minimum job budget slider so under-budget inquiries stay filtered out</li>
+              <li>One-tap contact reveal (client name, phone &amp; WhatsApp quote link) at KES 200</li>
+              <li>Real-time alerts when new Nairobi &amp; Kenya-wide jobs match your vertical</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Right: Tabbed Sign In / Create Provider Account Card -->
+        <div class="panel-card">
+          <div class="auth-tabs" role="tablist" aria-label="Provider Authentication Mode">
+            <button type="button" class="auth-tab active" data-auth-tab="login" role="tab" aria-selected="true">Provider Sign In</button>
+            <button type="button" class="auth-tab" data-auth-tab="signup" role="tab" aria-selected="false">Create Provider Account</button>
+          </div>
+
+          <!-- TAB 1: SIGN IN -->
+          <div class="auth-pane active" id="pane-login">
+            <h3 style="margin-bottom:0.25rem;">Welcome Back</h3>
+            <p style="font-size:0.86rem;color:var(--br-slate);margin:0;">
+              Sign in with your business email or registered M-Pesa phone number to access your lead wallet and queue.
+            </p>
+
+            <form id="providerLoginForm" class="form-stack">
+              <div class="field">
+                <label for="loginIdentifier">Business Email or M-Pesa Phone</label>
+                <input type="text" id="loginIdentifier" required placeholder="e.g. director@company.co.ke or +254 7XX XXX XXX">
+              </div>
+
+              <div class="field">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" required minlength="4" placeholder="Enter your account password">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%;">Sign In to Provider Portal</button>
+
+              <p style="font-size:0.82rem;color:var(--br-slate);text-align:center;margin:0.25rem 0 0;">
+                New service provider?
+                <button type="button" data-switch-auth="signup" style="border:0;background:none;color:var(--br-blue);font-weight:700;cursor:pointer;text-decoration:underline;padding:0;">Create your account &amp; activate KES 600 wallet</button>
+              </p>
+            </form>
+          </div>
+
+          <!-- TAB 2: CREATE PROVIDER ACCOUNT (SIGN UP) -->
+          <div class="auth-pane" id="pane-signup">
+            <h3 style="margin-bottom:0.25rem;">Register Your Service Business</h3>
+            <p style="font-size:0.86rem;color:var(--br-slate);margin:0;">
+              Set your vertical, minimum job budget floor, and opening M-Pesa wallet deposit to start receiving matched leads.
+            </p>
+
+            <form id="providerSignupForm" class="form-stack">
+              <div class="field">
+                <label for="signupBusinessName">Business / Practice Name</label>
+                <input type="text" id="signupBusinessName" required placeholder="e.g. Ridgeways Auto Diagnostics Ltd">
+              </div>
+
+              <div class="form-2col">
+                <div class="field">
+                  <label for="signupVertical">Primary Service Vertical</label>
+                  <select id="signupVertical">
+                    <option value="All">All Service Categories</option>
+                    <option value="Legal Services">Legal Services</option>
+                    <option value="Auto Mechanic">Auto Mechanic &amp; Fleet</option>
+                    <option value="Accounting & Tax">Accounting &amp; Tax</option>
+                    <option value="Plumbing & Electrical">Plumbing &amp; Electrical</option>
+                    <option value="Business Consulting">Business &amp; HR Advisory</option>
+                    <option value="Construction & Renovations">Construction &amp; Renovations</option>
+                    <option value="IT & Digital Systems">IT &amp; Digital Systems</option>
+                    <option value="Events & Logistics">Events &amp; Logistics</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="signupMinBudget">Minimum Job Floor (KES)</label>
+                  <input type="number" id="signupMinBudget" min="2000" max="50000" step="2000" value="10000" required>
+                </div>
+              </div>
+
+              <div class="form-2col">
+                <div class="field">
+                  <label for="signupMpesaPhone">M-Pesa STK Push Number</label>
+                  <input type="tel" id="signupMpesaPhone" required placeholder="+254 7XX XXX XXX">
+                </div>
+                <div class="field">
+                  <label for="signupEmail">Work Email</label>
+                  <input type="email" id="signupEmail" required placeholder="info@yourbusiness.co.ke">
+                </div>
+              </div>
+
+              <div class="form-2col">
+                <div class="field">
+                  <label for="signupDeposit">Opening M-Pesa Deposit</label>
+                  <select id="signupDeposit">
+                    <option value="600">KES 600 Starter (3 Leads)</option>
+                    <option value="1000">KES 1,000 Growth (5 Leads)</option>
+                    <option value="2000">KES 2,000 Scale (10 Leads)</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="signupPassword">Create Password</label>
+                  <input type="password" id="signupPassword" required minlength="4" placeholder="At least 4 characters">
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-gold" style="width:100%;">Create Account &amp; Activate M-Pesa Wallet</button>
+
+              <p style="font-size:0.82rem;color:var(--br-slate);text-align:center;margin:0.25rem 0 0;">
+                Already registered?
+                <button type="button" data-switch-auth="login" style="border:0;background:none;color:var(--br-blue);font-weight:700;cursor:pointer;text-decoration:underline;padding:0;">Sign in here</button>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTHENTICATED PROVIDER WORKSPACE (HIDDEN UNTIL SIGNED IN) -->
+    <section class="band hidden-view" id="providerWorkspace">
       <div class="container">
         <div class="market-grid">
           <!-- Left Column: Wallet, Price Floor Controls, Ledger -->
@@ -167,10 +327,7 @@
 
             <!-- Wallet Activity Ledger -->
             <div class="price-band-box" style="margin-bottom:0;">
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
-                <h3 style="font-family:var(--font-heading);font-size:1rem;color:var(--br-blue);margin:0;">M-Pesa Wallet Activity</h3>
-                <button type="button" class="btn btn-ghost btn-sm" id="resetWalletBtn" style="padding:0.3rem 0.65rem;font-size:0.74rem;">Reset Balance</button>
-              </div>
+              <h3 style="font-family:var(--font-heading);font-size:1rem;color:var(--br-blue);margin:0;">M-Pesa Wallet Activity</h3>
               <div class="ledger-list" id="walletLedger"></div>
             </div>
           </div>
@@ -196,7 +353,7 @@
     </section>
   </main>
 
-  <!-- Provider Onboarding / Profile Modal -->
+  <!-- Provider Profile & Preferences Modal (Authenticated Only) -->
   <div class="modal-backdrop" id="providerModal" role="dialog" aria-modal="true" aria-labelledby="providerModalTitle">
     <div class="modal-box">
       <div class="modal-head">
@@ -204,7 +361,7 @@
         <button type="button" class="modal-close" id="closeProviderModalBtn" aria-label="Close">&times;</button>
       </div>
       <p style="font-size:0.85rem;color:var(--br-slate);margin:0 0 1rem;">
-        Configure your business profile, primary vertical, and M-Pesa billing number to receive tailored Nairobi &amp; Kenya-wide lead alerts.
+        Update your business profile, primary vertical, and M-Pesa billing number.
       </p>
       <form id="providerProfileForm" class="form-stack" style="margin-top:0;">
         <div class="field">
@@ -238,7 +395,7 @@
           <input type="tel" id="profMpesaPhone" required placeholder="+254 7XX XXX XXX">
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width:100%;">Save Provider Profile &amp; Apply Filter</button>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Provider Profile</button>
       </form>
     </div>
   </div>
@@ -257,7 +414,7 @@
           <h4>Marketplace</h4>
           <ul>
             <li><a href="post-job.html">Post a Service Request</a></li>
-            <li><a href="provider-portal.html">Service Provider Portal</a></li>
+            <li><a href="provider-portal.html">Service Provider Login</a></li>
             <li><a href="services.html">Service Categories</a></li>
             <li><a href="pricing.html">Pricing &amp; ROI Calculator</a></li>
           </ul>

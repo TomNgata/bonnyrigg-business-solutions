@@ -6,7 +6,7 @@
 ## Multi-Page Site Map
 1. **`index.html`** — Executive Home (Hero, Economics Strip, Matching Engine Overview, Popular Service Verticals, Split Client/Provider Value Props, Live Nairobi Requests Pulse, 4 Brand Pillars, CTA Band).
 2. **`post-job.html`** — Client Service Request page (Free job posting, category pre-fill via `?category=...`, live match estimate, budget guidance, masked contact confirmation with Reference ID, Client FAQ).
-3. **`provider-portal.html`** — Service Provider Portal & M-Pesa Wallet (KES 600 starter wallet, M-Pesa STK Push top-ups, live Wallet Transaction Ledger, Service Vertical & Minimum Job Price Floor slider, Search & Status Tabs, KES 200 lead unlocks with Call/WhatsApp links, Provider Profile & Verification modal).
+3. **`provider-portal.html`** — Gated Service Provider Login & Registration wall (`Provider Sign In` + `Create Provider Account` with vertical, minimum job floor & opening M-Pesa deposit). Once authenticated, unlocks the private M-Pesa Wallet, Transaction Ledger, Service Vertical & Minimum Job Price Floor slider, Search & Status Tabs, KES 200 lead unlocks with Call/WhatsApp links, Provider Profile modal, and Sign Out.
 4. **`services.html`** — 8-Vertical Kenyan Services Directory with live search, group filters, dynamic open request counts, typical KES budgets, and direct Post Job / View Leads routing.
 5. **`how-it-works.html`** — End-to-end two-sided workflow, Traditional Directories vs. BonnyRigg Price-Point Matching comparison table, and Provider Quality Standards.
 6. **`pricing.html`** — Transparent Pay-Per-Lead pricing (Clients KES 0; Provider M-Pesa wallet bundles from KES 600), Interactive Provider ROI Calculator, and Wallet/Billing FAQ.

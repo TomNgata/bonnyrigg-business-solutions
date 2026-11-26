@@ -1,4 +1,4 @@
-const STORAGE_KEY = "br_marketplace_v2";
+const STORAGE_KEY = "br_marketplace_v3";
 const LEAD_COST = 200;
 const INITIAL_WALLET = 600;
 
@@ -157,28 +157,36 @@ const INITIAL_LEADS = [
   }
 ];
 
-const INITIAL_TRANSACTIONS = [
-  {
-    id: "tx-init",
-    type: "credit",
-    amount: 600,
-    label: "M-Pesa Starter Wallet Deposit",
-    ref: "MPESA-SJK842Q1",
-    time: "Account Activated"
-  }
-];
+function getDefaultTransactions(deposit = INITIAL_WALLET) {
+  return [
+    {
+      id: "tx-init",
+      type: "credit",
+      amount: deposit,
+      label: `M-Pesa Opening Deposit (${Math.floor(deposit / LEAD_COST)} leads)`,
+      ref: "MPESA-SJK842Q1",
+      time: "Account Activated"
+    }
+  ];
+}
 
 function getDefaultState() {
   return {
+    auth: {
+      isLoggedIn: false,
+      identifier: ""
+    },
     wallet: INITIAL_WALLET,
     leads: JSON.parse(JSON.stringify(INITIAL_LEADS)),
-    transactions: JSON.parse(JSON.stringify(INITIAL_TRANSACTIONS)),
+    transactions: getDefaultTransactions(INITIAL_WALLET),
     providerProfile: {
       businessName: "Verified Nairobi Provider",
+      email: "",
       vertical: "All",
       minBudget: 10000,
       mpesaPhone: "+254 7XX XXX XXX"
-    }
+    },
+    registeredAccount: null
   };
 }
 
@@ -191,6 +199,10 @@ function loadState() {
     return {
       ...getDefaultState(),
       ...parsed,
+      auth: {
+        ...getDefaultState().auth,
+        ...(parsed.auth || {})
+      },
       providerProfile: {
         ...getDefaultState().providerProfile,
         ...(parsed.providerProfile || {})
@@ -205,7 +217,7 @@ function saveState(state) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch (e) {
-    // Ignore storage quota errors in restricted browsing modes
+    // Ignore storage quota errors
   }
 }
 
@@ -240,22 +252,30 @@ function showToast(msg) {
   window.__brToast = setTimeout(() => toastEl.classList.remove("show"), 3600);
 }
 
-/* Global Mobile Navigation */
-function initNavigation() {
+/* Global Mobile Navigation & Auth-Aware Navbar CTA */
+function initNavigation(state) {
   const toggleBtn = document.getElementById("navToggle");
   const mobileMenu = document.getElementById("mobileMenu");
-  if (!toggleBtn || !mobileMenu) return;
-
-  toggleBtn.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.toggle("open");
-    toggleBtn.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  mobileMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.remove("open");
-      toggleBtn.setAttribute("aria-expanded", "false");
+  if (toggleBtn && mobileMenu) {
+    toggleBtn.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      toggleBtn.setAttribute("aria-expanded", String(isOpen));
     });
+
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        toggleBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  document.querySelectorAll('a[href="provider-portal.html"].btn-gold').forEach((btn) => {
+    if (state.auth && state.auth.isLoggedIn) {
+      btn.innerHTML = `<span class="auth-status-dot" aria-hidden="true"></span><span>Provider Dashboard</span>`;
+    } else if (btn.textContent.trim() === "Provider Portal" || btn.textContent.trim() === "Provider Dashboard") {
+      btn.textContent = "Provider Login";
+    }
   });
 }
 
@@ -268,12 +288,15 @@ function hydrateCategoryCounts(state) {
   });
 }
 
-/* Home Page: Live Marketplace Pulse Preview */
+/* Home Page: Live Marketplace Pulse Preview (Anonymized Public View) */
 function initHomePulse(state) {
   const pulseEl = document.getElementById("homeLeadsPulse");
   if (!pulseEl) return;
 
+  const isLoggedIn = Boolean(state.auth && state.auth.isLoggedIn);
+  const ctaLabel = isLoggedIn ? "View in Dashboard" : "Provider Login to Unlock";
   const recent = state.leads.slice(0, 3);
+
   pulseEl.innerHTML = recent
     .map(
       (l) => `
@@ -286,8 +309,8 @@ function initHomePulse(state) {
         <div class="lead-meta">${escapeHtml(l.location)} · ${escapeHtml(l.urgency)} · ${escapeHtml(l.postedAt)}</div>
         <p style="font-size:0.85rem;margin:0 0 0.9rem;color:var(--br-slate);">${escapeHtml(l.desc)}</p>
         <div class="lead-foot">
-          <span style="font-size:0.78rem;color:var(--br-slate);">Contact masked until unlocked</span>
-          <a href="provider-portal.html?category=${encodeURIComponent(l.category)}" class="btn btn-primary btn-sm">Unlock in Portal (KES 200)</a>
+          <span style="font-size:0.78rem;color:var(--br-slate);">Verified provider account required</span>
+          <a href="provider-portal.html?category=${encodeURIComponent(l.category)}" class="btn btn-primary btn-sm">${ctaLabel}</a>
         </div>
       </article>`
     )
@@ -323,10 +346,7 @@ function initServicesPage() {
     }
   }
 
-  if (searchInput) {
-    searchInput.addEventListener("input", applyFilter);
-  }
-
+  if (searchInput) searchInput.addEventListener("input", applyFilter);
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       activeGroup = btn.dataset.group;
@@ -336,7 +356,7 @@ function initServicesPage() {
   });
 }
 
-/* Post a Job Page (Demand Side) */
+/* Post a Job Page (Demand Side — 100% Client-Facing) */
 function initPostJobPage(state) {
   const form = document.getElementById("postJobForm");
   if (!form) return;
@@ -365,9 +385,7 @@ function initPostJobPage(state) {
     const cat = jobCategoryInput.value;
     const bud = Number(jobBudgetInput.value) || 0;
     const meta = CATEGORY_META[cat];
-    if (budgetHintEl && meta) {
-      budgetHintEl.textContent = meta.budgetHint;
-    }
+    if (budgetHintEl && meta) budgetHintEl.textContent = meta.budgetHint;
     if (consumerMatchPreview) {
       consumerMatchPreview.innerHTML = `<strong>Live Match Estimate:</strong> Posting a <strong>${formatKES(bud)}</strong> request in <strong>${escapeHtml(cat)}</strong> notifies vetted Kenyan providers whose minimum job price floor is at or below ${formatKES(bud)}.`;
     }
@@ -405,11 +423,11 @@ function initPostJobPage(state) {
           <span class="live-pill">Ref: ${refId}</span>
         </div>
         <p style="margin:0 0 0.9rem;font-size:0.88rem;color:#14532D;">
-          Your request <strong>"${escapeHtml(newLead.title)}"</strong> (${formatKES(newLead.budget)} · ${escapeHtml(newLead.location)}) is now live and matched to vetted <strong>${escapeHtml(newLead.category)}</strong> providers. Your phone number stays masked until a qualified provider unlocks your lead.
+          Thank you, <strong>${escapeHtml(newLead.clientName)}</strong>. Your request <strong>"${escapeHtml(newLead.title)}"</strong> (${formatKES(newLead.budget)} · ${escapeHtml(newLead.location)}) has been dispatched to vetted <strong>${escapeHtml(newLead.category)}</strong> providers matching your budget. Your phone number stays masked until a verified provider unlocks your lead.
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:0.65rem;">
-          <a href="provider-portal.html?category=${encodeURIComponent(newLead.category)}" class="btn btn-primary btn-sm">View in Provider Lead Queue</a>
-          <button type="button" class="btn btn-outline btn-sm" id="postAnotherBtn">Post Another Request</button>
+          <button type="button" class="btn btn-primary btn-sm" id="postAnotherBtn">Post Another Request</button>
+          <a href="services.html" class="btn btn-outline btn-sm">Browse Service Categories</a>
         </div>
       `;
       confirmBox.classList.add("show");
@@ -429,14 +447,22 @@ function initPostJobPage(state) {
     form.reset();
     jobBudgetInput.value = 25000;
     updatePreview();
-    showToast(`Job posted! Reference ${refId} is now live in the Provider Lead Queue.`);
+    showToast(`Service request published! Reference ${refId}.`);
   });
 }
 
-/* Provider Portal Page (Supply Side & M-Pesa Wallet) */
+/* Provider Portal Page — Auth Gate + Protected Supply Workspace */
 function initProviderPortal(state) {
-  const leadsListEl = document.getElementById("leadsList");
-  if (!leadsListEl) return;
+  const authGateEl = document.getElementById("providerAuthGate");
+  const workspaceEl = document.getElementById("providerWorkspace");
+  if (!authGateEl || !workspaceEl) return;
+
+  const heroGateCard = document.getElementById("providerHeroGateCard");
+  const heroAccountCard = document.getElementById("providerHeroAccountCard");
+  const heroHeadingEl = document.getElementById("providerHeroHeading");
+  const heroLeadEl = document.getElementById("providerHeroLead");
+  const gateOpenCountEl = document.getElementById("gateOpenLeadsCount");
+  const gateBudgetRangeEl = document.getElementById("gateBudgetRange");
 
   const walletBalanceEl = document.getElementById("walletBalance");
   const leadsRemainingEl = document.getElementById("leadsRemainingText");
@@ -444,10 +470,20 @@ function initProviderPortal(state) {
   const minBudgetRange = document.getElementById("minBudgetRange");
   const minBudgetLabel = document.getElementById("minBudgetLabel");
   const matchedCountLabel = document.getElementById("matchedCountLabel");
+  const leadsListEl = document.getElementById("leadsList");
   const ledgerListEl = document.getElementById("walletLedger");
   const leadSearchInput = document.getElementById("leadSearchInput");
   const statusTabs = Array.from(document.querySelectorAll(".lead-status-tab"));
   const providerBadgeEl = document.getElementById("providerBusinessLabel");
+  const providerMetaEl = document.getElementById("providerAccountMeta");
+
+  const authTabs = Array.from(document.querySelectorAll(".auth-tab"));
+  const loginPane = document.getElementById("pane-login");
+  const signupPane = document.getElementById("pane-signup");
+  const loginForm = document.getElementById("providerLoginForm");
+  const signupForm = document.getElementById("providerSignupForm");
+  const signupDepositSelect = document.getElementById("signupDeposit");
+  const signupVerticalSelect = document.getElementById("signupVertical");
 
   let activeCat = state.providerProfile.vertical || "All";
   let minBudget = Number(state.providerProfile.minBudget) || 10000;
@@ -456,34 +492,54 @@ function initProviderPortal(state) {
 
   const params = new URLSearchParams(window.location.search);
   const urlCat = params.get("category");
-  if (urlCat && providerCatFilter) {
+  const urlMode = params.get("mode");
+  const urlTopup = Number(params.get("topup"));
+
+  if (urlCat) {
     const matchOption = Array.from(providerCatFilter.options).find(
       (opt) => opt.value.toLowerCase() === urlCat.toLowerCase()
     );
     if (matchOption) {
       activeCat = matchOption.value;
+      if (signupVerticalSelect) signupVerticalSelect.value = matchOption.value;
     }
   }
 
-  const urlTopup = Number(params.get("topup"));
-  if (urlTopup >= 600 && !sessionStorage.getItem("br_topup_applied_" + urlTopup)) {
-    state.wallet += urlTopup;
-    state.transactions.unshift({
-      id: "tx-" + Date.now(),
-      type: "credit",
-      amount: urlTopup,
-      label: `M-Pesa Bundle Top-Up (${Math.floor(urlTopup / LEAD_COST)} leads)`,
-      ref: makeRef("MPESA"),
-      time: "Just now"
-    });
-    saveState(state);
-    sessionStorage.setItem("br_topup_applied_" + urlTopup, "1");
-    setTimeout(() => showToast(`M-Pesa top-up ready: +${formatKES(urlTopup)} credited to your wallet.`), 300);
+  if (urlTopup && signupDepositSelect) {
+    const opt = Array.from(signupDepositSelect.options).find((o) => Number(o.value) === urlTopup);
+    if (opt) signupDepositSelect.value = opt.value;
   }
 
-  if (providerCatFilter) providerCatFilter.value = activeCat;
-  if (minBudgetRange) minBudgetRange.value = minBudget;
-  if (providerBadgeEl) providerBadgeEl.textContent = state.providerProfile.businessName;
+  function switchAuthTab(tabName) {
+    authTabs.forEach((t) => {
+      const isMatch = t.dataset.authTab === tabName;
+      t.classList.toggle("active", isMatch);
+      t.setAttribute("aria-selected", String(isMatch));
+    });
+    if (loginPane) loginPane.classList.toggle("active", tabName === "login");
+    if (signupPane) signupPane.classList.toggle("active", tabName === "signup");
+  }
+
+  authTabs.forEach((t) => t.addEventListener("click", () => switchAuthTab(t.dataset.authTab)));
+  document.querySelectorAll("[data-switch-auth]").forEach((btn) => {
+    btn.addEventListener("click", () => switchAuthTab(btn.dataset.switchAuth));
+  });
+
+  if (urlMode === "signup" || urlTopup >= 600) {
+    switchAuthTab("signup");
+  }
+
+  function renderGateStats() {
+    if (gateOpenCountEl) {
+      gateOpenCountEl.textContent = `${state.leads.length} Active Requests`;
+    }
+    if (gateBudgetRangeEl && state.leads.length) {
+      const budgets = state.leads.map((l) => l.budget);
+      const minB = Math.min(...budgets);
+      const maxB = Math.max(...budgets);
+      gateBudgetRangeEl.textContent = `KES ${(minB / 1000).toFixed(0)}k – KES ${(maxB / 1000).toFixed(0)}k`;
+    }
+  }
 
   function renderWallet() {
     walletBalanceEl.textContent = formatKES(state.wallet);
@@ -535,11 +591,8 @@ function initProviderPortal(state) {
     if (!visible.length) {
       leadsListEl.innerHTML = `
         <div class="panel-card" style="text-align:center;">
-          <p style="margin:0 0 0.85rem;color:var(--br-slate);">No client leads match your current filters.</p>
-          <div style="display:flex;justify-content:center;gap:0.65rem;flex-wrap:wrap;">
-            <button type="button" class="btn btn-outline btn-sm" id="clearLeadFiltersBtn">Show All Leads</button>
-            <a href="post-job.html" class="btn btn-primary btn-sm">Post a New Request</a>
-          </div>
+          <p style="margin:0 0 0.85rem;color:var(--br-slate);">No client leads match your current vertical or price-floor filters.</p>
+          <button type="button" class="btn btn-outline btn-sm" id="clearLeadFiltersBtn">Show All Service Categories</button>
         </div>`;
       const clearBtn = document.getElementById("clearLeadFiltersBtn");
       if (clearBtn) {
@@ -645,6 +698,140 @@ function initProviderPortal(state) {
     });
   }
 
+  function syncAuthView() {
+    const loggedIn = Boolean(state.auth && state.auth.isLoggedIn);
+
+    authGateEl.classList.toggle("hidden-view", loggedIn);
+    workspaceEl.classList.toggle("hidden-view", !loggedIn);
+
+    if (heroGateCard) heroGateCard.classList.toggle("hidden-view", loggedIn);
+    if (heroAccountCard) heroAccountCard.classList.toggle("hidden-view", !loggedIn);
+
+    if (loggedIn) {
+      if (heroHeadingEl) heroHeadingEl.innerHTML = `Provider Workspace &amp; <span>M-Pesa Lead Wallet</span>`;
+      if (heroLeadEl) {
+        heroLeadEl.textContent =
+          "Manage your M-Pesa wallet, tune your minimum accepted job budget floor, and unlock verified client contacts across Kenya at KES 200 per lead.";
+      }
+      if (providerBadgeEl) providerBadgeEl.textContent = state.providerProfile.businessName;
+      if (providerMetaEl) {
+        providerMetaEl.textContent = `${state.providerProfile.mpesaPhone} · Floor: ${formatKES(minBudget)}`;
+      }
+
+      if (urlTopup >= 600 && !sessionStorage.getItem("br_topup_applied_" + urlTopup)) {
+        state.wallet += urlTopup;
+        state.transactions.unshift({
+          id: "tx-" + Date.now(),
+          type: "credit",
+          amount: urlTopup,
+          label: `M-Pesa Bundle Top-Up (${Math.floor(urlTopup / LEAD_COST)} leads)`,
+          ref: makeRef("MPESA"),
+          time: "Just now"
+        });
+        saveState(state);
+        sessionStorage.setItem("br_topup_applied_" + urlTopup, "1");
+        showToast(`M-Pesa top-up applied: +${formatKES(urlTopup)} credited.`);
+      }
+
+      providerCatFilter.value = activeCat;
+      minBudgetRange.value = minBudget;
+      renderWallet();
+      renderLeads();
+    } else {
+      if (heroHeadingEl) heroHeadingEl.innerHTML = `Service Provider <span>Sign In &amp; Registration</span>`;
+      if (heroLeadEl) {
+        heroLeadEl.textContent =
+          "Sign in to your verified provider account—or create one with a KES 600 M-Pesa starter wallet—to view live client leads matched to your exact price floor.";
+      }
+      renderGateStats();
+    }
+
+    initNavigation(state);
+  }
+
+  /* Handle Sign In Form */
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const identifier = document.getElementById("loginIdentifier").value.trim();
+      const password = document.getElementById("loginPassword").value;
+      if (!identifier || !password) return;
+
+      if (state.registeredAccount) {
+        state.providerProfile = { ...state.registeredAccount };
+      } else {
+        const inferredName = identifier.includes("@")
+          ? identifier.split("@")[0].replace(/[._-]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) + " Services"
+          : "Verified Nairobi Provider";
+        state.providerProfile = {
+          ...state.providerProfile,
+          businessName: state.providerProfile.businessName === "Verified Nairobi Provider" ? inferredName : state.providerProfile.businessName,
+          email: identifier.includes("@") ? identifier : state.providerProfile.email,
+          mpesaPhone: identifier.includes("@") ? state.providerProfile.mpesaPhone : identifier
+        };
+      }
+
+      state.auth = { isLoggedIn: true, identifier };
+      activeCat = urlCat || state.providerProfile.vertical || "All";
+      minBudget = Number(state.providerProfile.minBudget) || 10000;
+      saveState(state);
+      loginForm.reset();
+      syncAuthView();
+      showToast(`Welcome back, ${state.providerProfile.businessName}.`);
+    });
+  }
+
+  /* Handle Create Provider Account (Sign Up) Form */
+  if (signupForm) {
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const bizName = document.getElementById("signupBusinessName").value.trim();
+      const vertical = document.getElementById("signupVertical").value;
+      const phone = document.getElementById("signupMpesaPhone").value.trim();
+      const floor = Math.max(2000, Math.min(50000, Number(document.getElementById("signupMinBudget").value) || 10000));
+      const email = document.getElementById("signupEmail").value.trim();
+      const openingDeposit = Number(signupDepositSelect ? signupDepositSelect.value : INITIAL_WALLET) || INITIAL_WALLET;
+
+      const profile = {
+        businessName: bizName,
+        email,
+        vertical,
+        minBudget: floor,
+        mpesaPhone: phone
+      };
+
+      state.providerProfile = profile;
+      state.registeredAccount = { ...profile };
+      state.wallet = openingDeposit;
+      state.transactions = getDefaultTransactions(openingDeposit);
+      state.auth = { isLoggedIn: true, identifier: email || phone };
+      activeCat = vertical;
+      minBudget = floor;
+
+      if (urlTopup >= 600) {
+        sessionStorage.setItem("br_topup_applied_" + urlTopup, "1");
+      }
+
+      saveState(state);
+      signupForm.reset();
+      syncAuthView();
+      showToast(`Account created for ${bizName}! ${formatKES(openingDeposit)} M-Pesa wallet activated.`);
+    });
+  }
+
+  /* Handle Sign Out */
+  const signOutBtn = document.getElementById("providerSignOutBtn");
+  if (signOutBtn) {
+    signOutBtn.addEventListener("click", () => {
+      state.auth = { isLoggedIn: false, identifier: "" };
+      saveState(state);
+      switchAuthTab("login");
+      syncAuthView();
+      showToast("You have signed out of the Provider Portal.");
+    });
+  }
+
+  /* Protected Workspace Controls */
   providerCatFilter.addEventListener("change", () => {
     activeCat = providerCatFilter.value;
     state.providerProfile.vertical = activeCat;
@@ -655,6 +842,9 @@ function initProviderPortal(state) {
   minBudgetRange.addEventListener("input", () => {
     minBudget = Number(minBudgetRange.value);
     state.providerProfile.minBudget = minBudget;
+    if (providerMetaEl) {
+      providerMetaEl.textContent = `${state.providerProfile.mpesaPhone} · Floor: ${formatKES(minBudget)}`;
+    }
     saveState(state);
     renderLeads();
   });
@@ -692,31 +882,7 @@ function initProviderPortal(state) {
     });
   });
 
-  const resetBtn = document.getElementById("resetWalletBtn");
-  if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      const fresh = getDefaultState();
-      state.wallet = fresh.wallet;
-      state.leads = fresh.leads;
-      state.transactions = fresh.transactions;
-      state.providerProfile = fresh.providerProfile;
-      activeCat = "All";
-      minBudget = 10000;
-      activeStatus = "all";
-      searchQuery = "";
-      providerCatFilter.value = "All";
-      minBudgetRange.value = 10000;
-      if (leadSearchInput) leadSearchInput.value = "";
-      if (providerBadgeEl) providerBadgeEl.textContent = state.providerProfile.businessName;
-      statusTabs.forEach((t) => t.classList.toggle("active", t.dataset.status === "all"));
-      saveState(state);
-      renderWallet();
-      renderLeads();
-      showToast("Provider workspace reset to KES 600 starter wallet.");
-    });
-  }
-
-  /* Provider Onboarding / Profile Modal */
+  /* Provider Profile & Preferences Modal (Protected) */
   const openModalBtn = document.getElementById("openProviderModalBtn");
   const modalBackdrop = document.getElementById("providerModal");
   const closeModalBtn = document.getElementById("closeProviderModalBtn");
@@ -746,33 +912,37 @@ function initProviderPortal(state) {
     if (profileForm) {
       profileForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const biz = document.getElementById("profBusinessName").value.trim() || "Verified Nairobi Provider";
+        const biz = document.getElementById("profBusinessName").value.trim() || state.providerProfile.businessName;
         const vert = document.getElementById("profVertical").value;
         const floor = Math.max(2000, Math.min(50000, Number(document.getElementById("profMinBudget").value) || 10000));
-        const phone = document.getElementById("profMpesaPhone").value.trim() || "+254 7XX XXX XXX";
+        const phone = document.getElementById("profMpesaPhone").value.trim() || state.providerProfile.mpesaPhone;
 
         state.providerProfile = {
+          ...state.providerProfile,
           businessName: biz,
           vertical: vert,
           minBudget: floor,
           mpesaPhone: phone
         };
+        if (state.registeredAccount) {
+          state.registeredAccount = { ...state.providerProfile };
+        }
         activeCat = vert;
         minBudget = floor;
         providerCatFilter.value = vert;
         minBudgetRange.value = floor;
         if (providerBadgeEl) providerBadgeEl.textContent = biz;
+        if (providerMetaEl) providerMetaEl.textContent = `${phone} · Floor: ${formatKES(floor)}`;
 
         saveState(state);
         renderLeads();
         closeModal();
-        showToast(`Provider profile updated for ${biz}. Price floor set to ${formatKES(floor)}.`);
+        showToast(`Provider profile updated for ${biz}.`);
       });
     }
   }
 
-  renderWallet();
-  renderLeads();
+  syncAuthView();
 }
 
 /* Pricing Page: Interactive Provider ROI Calculator */
@@ -847,7 +1017,7 @@ function initContactForm() {
 /* Bootstrap on DOM Ready */
 document.addEventListener("DOMContentLoaded", () => {
   const state = loadState();
-  initNavigation();
+  initNavigation(state);
   hydrateCategoryCounts(state);
   initHomePulse(state);
   initServicesPage();
