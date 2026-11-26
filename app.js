@@ -294,7 +294,7 @@ function initHomePulse(state) {
   if (!pulseEl) return;
 
   const isLoggedIn = Boolean(state.auth && state.auth.isLoggedIn);
-  const ctaLabel = isLoggedIn ? "View in Dashboard" : "Provider Login to Unlock";
+  const ctaLabel = isLoggedIn ? "Open Dashboard" : "Provider Login";
   const recent = state.leads.slice(0, 3);
 
   pulseEl.innerHTML = recent
@@ -306,10 +306,9 @@ function initHomePulse(state) {
           <span class="lead-budget">${formatKES(l.budget)}</span>
         </div>
         <h4>${escapeHtml(l.title)}</h4>
-        <div class="lead-meta">${escapeHtml(l.location)} · ${escapeHtml(l.urgency)} · ${escapeHtml(l.postedAt)}</div>
-        <p style="font-size:0.85rem;margin:0 0 0.9rem;color:var(--br-slate);">${escapeHtml(l.desc)}</p>
+        <div class="lead-meta">${escapeHtml(l.location)} · ${escapeHtml(l.urgency)}</div>
         <div class="lead-foot">
-          <span style="font-size:0.78rem;color:var(--br-slate);">Verified provider account required</span>
+          <span style="font-size:0.78rem;color:var(--br-slate);">Contact masked</span>
           <a href="provider-portal.html?category=${encodeURIComponent(l.category)}" class="btn btn-primary btn-sm">${ctaLabel}</a>
         </div>
       </article>`
@@ -356,7 +355,7 @@ function initServicesPage() {
   });
 }
 
-/* Post a Job Page (Demand Side — 100% Client-Facing) */
+/* Post a Job Page (Demand Side, Client-Facing) */
 function initPostJobPage(state) {
   const form = document.getElementById("postJobForm");
   if (!form) return;
@@ -451,7 +450,7 @@ function initPostJobPage(state) {
   });
 }
 
-/* Provider Portal Page — Auth Gate + Protected Supply Workspace */
+/* Provider Portal Page: Auth Gate + Protected Supply Workspace */
 function initProviderPortal(state) {
   const authGateEl = document.getElementById("providerAuthGate");
   const workspaceEl = document.getElementById("providerWorkspace");
@@ -708,10 +707,9 @@ function initProviderPortal(state) {
     if (heroAccountCard) heroAccountCard.classList.toggle("hidden-view", !loggedIn);
 
     if (loggedIn) {
-      if (heroHeadingEl) heroHeadingEl.innerHTML = `Provider Workspace &amp; <span>M-Pesa Lead Wallet</span>`;
+      if (heroHeadingEl) heroHeadingEl.innerHTML = `Provider <span>Dashboard</span>`;
       if (heroLeadEl) {
-        heroLeadEl.textContent =
-          "Manage your M-Pesa wallet, tune your minimum accepted job budget floor, and unlock verified client contacts across Kenya at KES 200 per lead.";
+        heroLeadEl.textContent = "Manage your M-Pesa wallet, price floor, and matched client leads.";
       }
       if (providerBadgeEl) providerBadgeEl.textContent = state.providerProfile.businessName;
       if (providerMetaEl) {
@@ -738,10 +736,9 @@ function initProviderPortal(state) {
       renderWallet();
       renderLeads();
     } else {
-      if (heroHeadingEl) heroHeadingEl.innerHTML = `Service Provider <span>Sign In &amp; Registration</span>`;
+      if (heroHeadingEl) heroHeadingEl.innerHTML = `Service Provider <span>Access</span>`;
       if (heroLeadEl) {
-        heroLeadEl.textContent =
-          "Sign in to your verified provider account—or create one with a KES 600 M-Pesa starter wallet—to view live client leads matched to your exact price floor.";
+        heroLeadEl.textContent = "Sign in or register to view leads matched to your price floor.";
       }
       renderGateStats();
     }
@@ -1001,9 +998,9 @@ function initContactForm() {
 
     if (confirmBox) {
       confirmBox.innerHTML = `
-        <strong style="display:block;font-family:var(--font-heading);color:#14532D;margin-bottom:0.35rem;">✓ Message Received — Ref ${ref}</strong>
+        <strong style="display:block;font-family:var(--font-heading);color:#14532D;margin-bottom:0.35rem;">✓ Message Received (Ref ${ref})</strong>
         <p style="margin:0;font-size:0.88rem;color:#14532D;">
-          Thank you, <strong>${escapeHtml(name)}</strong>. Our Nairobi support desk has received your <strong>${escapeHtml(topic)}</strong> inquiry and will respond within 1 business day.
+          Thanks, <strong>${escapeHtml(name)}</strong>. Our Nairobi desk received your <strong>${escapeHtml(topic)}</strong> message.
         </p>
       `;
       confirmBox.classList.add("show");

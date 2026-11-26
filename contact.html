@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact &amp; Provider Support Desk — BonnyRigg Business Solutions</title>
-  <meta name="description" content="Get in touch with BonnyRigg Business Solutions in Nairobi, Kenya for provider verification, M-Pesa wallet assistance, corporate partnerships, or client support.">
+  <title>Contact | BonnyRigg Business Solutions</title>
+  <meta name="description" content="Contact the BonnyRigg Nairobi desk for provider verification, M-Pesa wallet support, or partnerships.">
   <link rel="icon" type="image/svg+xml" href="assets/bonnyrigg-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,9 @@
 </head>
 <body>
 
-  <div class="top-notice">
-    <div class="container">
-      <div class="notice-badge">
-        <span class="pulse-dot"></span>
-        <span>Nairobi Support &amp; Provider Onboarding Desk · Mon–Sat, 8:00 AM – 6:00 PM EAT</span>
-      </div>
-      <span>info@bonnyrigg.co.ke · Nairobi, Kenya</span>
-    </div>
-  </div>
-
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions Home">
+      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions">
         <img src="assets/bonnyrigg-logo-primary.svg" alt="BonnyRigg Business Solutions">
       </a>
 
@@ -40,7 +30,7 @@
 
       <div class="nav-actions">
         <a href="post-job.html" class="btn btn-outline">Post a Job</a>
-        <a href="provider-portal.html" class="btn btn-gold">Provider Portal</a>
+        <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
       </div>
 
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -56,15 +46,15 @@
       <div class="container">
         <nav class="mobile-nav-links" aria-label="Mobile Navigation">
           <a href="index.html">Home</a>
-          <a href="services.html">Services Directory</a>
+          <a href="services.html">Services</a>
           <a href="how-it-works.html">How It Works</a>
-          <a href="pricing.html">Pricing &amp; Wallets</a>
-          <a href="about.html">About BonnyRigg</a>
-          <a href="contact.html" class="active">Contact Support</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" class="active">Contact</a>
         </nav>
         <div class="mobile-nav-actions">
-          <a href="post-job.html" class="btn btn-outline">Post a Service Request (Free)</a>
-          <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal &amp; Wallet</a>
+          <a href="post-job.html" class="btn btn-outline">Post a Job</a>
+          <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
         </div>
       </div>
     </div>
@@ -72,117 +62,89 @@
 
   <main>
     <section class="page-hero">
-      <div class="container page-hero-grid">
-        <div>
-          <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>/</span>
-            <span>Contact</span>
-          </div>
-          <div class="eyebrow">We’re Here to Help</div>
-          <h1>Talk to Our <span>Nairobi Marketplace Team.</span></h1>
-          <p class="page-hero-lead">
-            Have a question about provider onboarding, M-Pesa wallet top-ups, corporate multi-user accounts, or posting a large procurement request? Reach out directly.
-          </p>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Contact</span>
         </div>
-        <div class="hero-summary-card">
-          <strong>Fast Response Guarantee</strong>
-          <p>All provider verification and M-Pesa wallet inquiries are prioritized by our Nairobi desk within one business day.</p>
-        </div>
+        <h1>Contact <span>Nairobi Desk.</span></h1>
+        <p class="page-hero-lead">Provider onboarding, M-Pesa wallet support, and corporate inquiries.</p>
       </div>
     </section>
 
     <section class="band">
-      <div class="container">
-        <div class="post-grid">
-          <!-- Contact Form -->
-          <div class="panel-card">
-            <h3>Send Us a Message</h3>
-            <p style="font-size:0.88rem;color:var(--br-slate);margin:0;">
-              Select your inquiry topic so we can route your message straight to the right team member.
-            </p>
+      <div class="container post-grid">
+        <div class="panel-card">
+          <h3>Send a Message</h3>
 
-            <div class="confirmation-box" id="contactConfirmBox" role="status" aria-live="polite"></div>
+          <div class="confirmation-box" id="contactConfirmBox" role="status" aria-live="polite"></div>
 
-            <form id="contactForm" class="form-stack">
-              <div class="form-2col">
-                <div class="field">
-                  <label for="contactName">Your Name</label>
-                  <input type="text" id="contactName" required placeholder="e.g. James Kariuki">
-                </div>
-                <div class="field">
-                  <label for="contactEmail">Email Address</label>
-                  <input type="email" id="contactEmail" required placeholder="name@company.co.ke">
-                </div>
-              </div>
-
-              <div class="form-2col">
-                <div class="field">
-                  <label for="contactPhone">Phone / WhatsApp Number</label>
-                  <input type="tel" id="contactPhone" required placeholder="+254 7XX XXX XXX">
-                </div>
-                <div class="field">
-                  <label for="contactTopic">Inquiry Topic</label>
-                  <select id="contactTopic">
-                    <option value="Provider Onboarding & Verification">Provider Onboarding &amp; Verification</option>
-                    <option value="M-Pesa Wallet & Billing">M-Pesa Wallet &amp; Billing</option>
-                    <option value="Client Job Request Support">Client Job Request Support</option>
-                    <option value="Enterprise & Corporate Accounts">Enterprise &amp; Corporate Accounts</option>
-                    <option value="Partnerships & Media">Partnerships &amp; Media</option>
-                  </select>
-                </div>
-              </div>
-
+          <form id="contactForm" class="form-stack">
+            <div class="form-2col">
               <div class="field">
-                <label for="contactMessage">How Can We Help?</label>
-                <textarea id="contactMessage" rows="4" required placeholder="Share your business name, vertical, or question..."></textarea>
+                <label for="contactName">Name</label>
+                <input type="text" id="contactName" required placeholder="James Kariuki">
               </div>
-
-              <button type="submit" class="btn btn-primary" style="width:100%;">Submit Inquiry</button>
-            </form>
-          </div>
-
-          <!-- Direct Contact Info Sidebar -->
-          <aside style="display:grid;gap:1.25rem;">
-            <div class="panel-card">
-              <h3>Direct Channels</h3>
-              <div style="display:grid;gap:0.9rem;margin-top:1rem;">
-                <div class="flow-step" style="margin-bottom:0;">
-                  <div class="step-badge">@</div>
-                  <div>
-                    <strong>General &amp; Onboarding Email</strong>
-                    <span>info@bonnyrigg.co.ke</span>
-                  </div>
-                </div>
-                <div class="flow-step" style="margin-bottom:0;">
-                  <div class="step-badge">KE</div>
-                  <div>
-                    <strong>Head Office</strong>
-                    <span>Nairobi, Kenya · Serving Nairobi Metro &amp; Nationwide</span>
-                  </div>
-                </div>
-                <div class="flow-step" style="margin-bottom:0;">
-                  <div class="step-badge">HR</div>
-                  <div>
-                    <strong>Support Hours</strong>
-                    <span>Monday – Friday: 8:00 AM – 6:00 PM EAT · Saturday: 9:00 AM – 1:00 PM</span>
-                  </div>
-                </div>
+              <div class="field">
+                <label for="contactEmail">Email</label>
+                <input type="email" id="contactEmail" required placeholder="name@company.co.ke">
               </div>
             </div>
 
-            <div class="panel-card" style="background:linear-gradient(135deg, var(--br-blue-deep), var(--br-blue));color:#fff;border:0;">
-              <h3 style="color:var(--br-gold);">Looking to Start Immediately?</h3>
-              <p style="font-size:0.86rem;color:rgba(255,255,255,0.84);margin:0 0 1rem;">
-                You don’t need to wait for an email reply to use the marketplace. Post a job or open your M-Pesa provider wallet directly online.
-              </p>
-              <div style="display:grid;gap:0.6rem;">
-                <a href="post-job.html" class="btn btn-gold" style="width:100%;">Post a Service Request Free</a>
-                <a href="provider-portal.html" class="btn btn-outline-light" style="width:100%;">Open Provider Portal</a>
+            <div class="form-2col">
+              <div class="field">
+                <label for="contactPhone">Phone / WhatsApp</label>
+                <input type="tel" id="contactPhone" required placeholder="+254 7XX XXX XXX">
+              </div>
+              <div class="field">
+                <label for="contactTopic">Topic</label>
+                <select id="contactTopic">
+                  <option value="Provider Onboarding">Provider Onboarding</option>
+                  <option value="M-Pesa Wallet Support">M-Pesa Wallet Support</option>
+                  <option value="Client Request Help">Client Request Help</option>
+                  <option value="Partnerships">Partnerships</option>
+                </select>
               </div>
             </div>
-          </aside>
+
+            <div class="field">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" rows="4" required placeholder="How can we help?"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+          </form>
         </div>
+
+        <aside style="display:grid;gap:1.25rem;">
+          <div class="panel-card">
+            <h3>Direct Channels</h3>
+            <div style="display:grid;gap:0.75rem;margin-top:0.9rem;">
+              <div class="flow-step" style="margin-bottom:0;">
+                <div class="step-badge">@</div>
+                <div>
+                  <strong>Email</strong>
+                  <span>info@bonnyrigg.co.ke</span>
+                </div>
+              </div>
+              <div class="flow-step" style="margin-bottom:0;">
+                <div class="step-badge">KE</div>
+                <div>
+                  <strong>Location</strong>
+                  <span>Nairobi, Kenya</span>
+                </div>
+              </div>
+              <div class="flow-step" style="margin-bottom:0;">
+                <div class="step-badge">HR</div>
+                <div>
+                  <strong>Hours</strong>
+                  <span>Mon – Sat, 8am – 6pm EAT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
@@ -191,29 +153,28 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:46px;width:auto;margin-bottom:0.9rem;">
-          <p style="font-size:0.85rem;margin:0;color:rgba(255,255,255,0.76);">
-            Kenya’s price-matched two-sided lead generation marketplace—connecting vetted business service providers with ready-to-hire clients via M-Pesa wallets.
+          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:42px;width:auto;margin-bottom:0.8rem;">
+          <p style="font-size:0.84rem;margin:0;color:rgba(255,255,255,0.74);max-width:34ch;">
+            Kenya's price-matched lead marketplace powered by M-Pesa wallets.
           </p>
         </div>
 
         <div>
           <h4>Marketplace</h4>
           <ul>
-            <li><a href="post-job.html">Post a Service Request</a></li>
-            <li><a href="provider-portal.html">Service Provider Portal</a></li>
-            <li><a href="services.html">Service Categories</a></li>
-            <li><a href="pricing.html">Pricing &amp; ROI Calculator</a></li>
+            <li><a href="post-job.html">Post a Job</a></li>
+            <li><a href="provider-portal.html">Provider Login</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="how-it-works.html">How Matching Works</a></li>
-            <li><a href="about.html">About BonnyRigg</a></li>
-            <li><a href="contact.html">Contact &amp; Support</a></li>
-            <li><a href="pricing.html#faq">Wallet &amp; Billing FAQ</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
@@ -223,14 +184,13 @@
             <li>Nairobi, Kenya</li>
             <li>info@bonnyrigg.co.ke</li>
             <li>www.bonnyrigg.co.ke</li>
-            <li>M-Pesa Paybill · Mon–Sat 8am–6pm</li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 BonnyRigg Business Solutions. All rights reserved.</span>
-        <span>Nairobi, Kenya · Strategy · Solutions · Growth · Impact</span>
+        <span>&copy; 2026 BonnyRigg Business Solutions</span>
+        <span>Nairobi, Kenya</span>
       </div>
     </div>
   </footer>

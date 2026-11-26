@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Post a Service Request Free — BonnyRigg Business Solutions</title>
-  <meta name="description" content="Post your legal, automotive, accounting, plumbing, electrical, or consulting job with your budget for free. Get matched with vetted Kenyan service providers ready to work within your range.">
+  <title>Post a Job Free | BonnyRigg Business Solutions</title>
+  <meta name="description" content="Post your service request and budget free in Kenya. Hear only from vetted providers matched to your price point.">
   <link rel="icon" type="image/svg+xml" href="assets/bonnyrigg-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,9 @@
 </head>
 <body>
 
-  <div class="top-notice">
-    <div class="container">
-      <div class="notice-badge">
-        <span class="pulse-dot"></span>
-        <span>100% Free for Clients · Masked Contact Privacy · Nairobi &amp; Kenya-Wide</span>
-      </div>
-      <span>Need provider leads instead? <a href="provider-portal.html" style="color:var(--br-gold);text-decoration:underline;">Open Provider Portal</a></span>
-    </div>
-  </div>
-
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions Home">
+      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions">
         <img src="assets/bonnyrigg-logo-primary.svg" alt="BonnyRigg Business Solutions">
       </a>
 
@@ -40,7 +30,7 @@
 
       <div class="nav-actions">
         <a href="post-job.html" class="btn btn-primary">Post a Job</a>
-        <a href="provider-portal.html" class="btn btn-gold">Provider Portal</a>
+        <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
       </div>
 
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -56,15 +46,15 @@
       <div class="container">
         <nav class="mobile-nav-links" aria-label="Mobile Navigation">
           <a href="index.html">Home</a>
-          <a href="services.html">Services Directory</a>
+          <a href="services.html">Services</a>
           <a href="how-it-works.html">How It Works</a>
-          <a href="pricing.html">Pricing &amp; Wallets</a>
-          <a href="about.html">About BonnyRigg</a>
-          <a href="contact.html">Contact Support</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </nav>
         <div class="mobile-nav-actions">
-          <a href="post-job.html" class="btn btn-primary">Post a Service Request (Free)</a>
-          <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal &amp; Wallet</a>
+          <a href="post-job.html" class="btn btn-primary">Post a Job</a>
+          <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
         </div>
       </div>
     </div>
@@ -72,177 +62,112 @@
 
   <main>
     <section class="page-hero">
-      <div class="container page-hero-grid">
-        <div>
-          <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>/</span>
-            <span>Post a Service Request</span>
-          </div>
-          <div class="eyebrow">KES 0 — Free for the Public</div>
-          <h1>Describe Your Job &amp; <span>Set Your Budget.</span></h1>
-          <p class="page-hero-lead">
-            Submit your service request in under 60 seconds. BonnyRigg matches you exclusively with vetted Kenyan providers whose minimum price floor fits your willingness-to-pay budget.
-          </p>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Post a Job</span>
         </div>
-        <div class="hero-summary-card">
-          <strong>Your Contact Stays Protected</strong>
-          <p>Your phone number is never displayed publicly. It is only revealed to verified, wallet-backed service providers who commit KES 200 to quote on your job.</p>
-        </div>
+        <h1>Post a Service Request <span>Free.</span></h1>
+        <p class="page-hero-lead">Share what you need and your budget. Matched Kenyan providers reach out directly.</p>
       </div>
     </section>
 
     <section class="band">
-      <div class="container">
-        <div class="post-grid">
-          <!-- Main Job Posting Form -->
+      <div class="container post-grid">
+        <div class="panel-card">
+          <h3>Job Details</h3>
+
+          <div class="confirmation-box" id="jobConfirmationBox" role="status" aria-live="polite"></div>
+
+          <form id="postJobForm" class="form-stack">
+            <div class="form-2col">
+              <div class="field">
+                <label for="jobCategory">Category</label>
+                <select id="jobCategory" required>
+                  <option value="Legal Services">Legal Services</option>
+                  <option value="Auto Mechanic">Auto Mechanic &amp; Fleet</option>
+                  <option value="Accounting & Tax">Accounting &amp; Tax</option>
+                  <option value="Plumbing & Electrical">Plumbing &amp; Electrical</option>
+                  <option value="Business Consulting">Business &amp; HR Advisory</option>
+                  <option value="Construction & Renovations">Construction &amp; Renovations</option>
+                  <option value="IT & Digital Systems">IT &amp; Digital Systems</option>
+                  <option value="Events & Logistics">Events &amp; Logistics</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="jobLocation">Location</label>
+                <input type="text" id="jobLocation" required placeholder="Westlands, Kilimani, Kiambu Rd">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="jobTitle">Job Title</label>
+              <input type="text" id="jobTitle" required placeholder="e.g. Commercial Lease Review">
+            </div>
+
+            <div class="form-2col">
+              <div class="field">
+                <label for="jobBudget">Budget (KES)</label>
+                <input type="number" id="jobBudget" min="1500" step="500" value="25000" required>
+                <div id="categoryBudgetHint" style="font-size:0.75rem;color:var(--br-slate);margin-top:0.25rem;">Typical: KES 15,000 – 120,000</div>
+              </div>
+              <div class="field">
+                <label for="jobUrgency">Timeline</label>
+                <select id="jobUrgency">
+                  <option value="Urgent (Within 24 hrs)">Urgent (24 hrs)</option>
+                  <option value="This Week">This Week</option>
+                  <option value="Within 2 Weeks">Within 2 Weeks</option>
+                  <option value="Flexible">Flexible</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-2col">
+              <div class="field">
+                <label for="clientName">Your Name</label>
+                <input type="text" id="clientName" required placeholder="David Mwangi">
+              </div>
+              <div class="field">
+                <label for="clientPhone">Phone / WhatsApp (Masked)</label>
+                <input type="tel" id="clientPhone" required placeholder="+254 7XX XXX XXX">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="jobDesc">Brief Scope</label>
+              <textarea id="jobDesc" rows="3" required placeholder="Key deliverables or requirements..."></textarea>
+            </div>
+
+            <div class="match-preview-box" id="consumerMatchPreview"></div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Publish Free Request</button>
+          </form>
+        </div>
+
+        <aside style="display:grid;gap:1.25rem;">
           <div class="panel-card">
-            <h3>Service Request Details</h3>
-            <p style="font-size:0.88rem;color:var(--br-slate);margin:0;">
-              Be specific about your scope, neighborhood, and realistic budget so matched providers can contact you with an accurate quote.
-            </p>
-
-            <div class="confirmation-box" id="jobConfirmationBox" role="status" aria-live="polite"></div>
-
-            <form id="postJobForm" class="form-stack">
-              <div class="form-2col">
-                <div class="field">
-                  <label for="jobCategory">Service Category</label>
-                  <select id="jobCategory" required>
-                    <option value="Legal Services">Legal Services</option>
-                    <option value="Auto Mechanic">Auto Mechanic &amp; Fleet</option>
-                    <option value="Accounting & Tax">Accounting &amp; Tax</option>
-                    <option value="Plumbing & Electrical">Plumbing &amp; Electrical</option>
-                    <option value="Business Consulting">Business &amp; HR Advisory</option>
-                    <option value="Construction & Renovations">Construction &amp; Renovations</option>
-                    <option value="IT & Digital Systems">IT &amp; Digital Systems</option>
-                    <option value="Events & Logistics">Events &amp; Logistics</option>
-                  </select>
-                </div>
-
-                <div class="field">
-                  <label for="jobLocation">Location / Area</label>
-                  <input type="text" id="jobLocation" required placeholder="e.g. Westlands, Kilimani, Kiambu Rd">
-                </div>
-              </div>
-
-              <div class="field">
-                <label for="jobTitle">Brief Job Title</label>
-                <input type="text" id="jobTitle" required placeholder="e.g. Company Registration &amp; Shareholders Agreement">
-              </div>
-
-              <div class="form-2col">
-                <div class="field">
-                  <label for="jobBudget">Your Willingness-to-Pay Budget (KES)</label>
-                  <input type="number" id="jobBudget" min="1500" step="500" value="25000" required>
-                  <div id="categoryBudgetHint" style="font-size:0.75rem;color:var(--br-slate);margin-top:0.3rem;">Typical Nairobi budgets: KES 15,000 – KES 120,000</div>
-                </div>
-                <div class="field">
-                  <label for="jobUrgency">Preferred Timeline</label>
-                  <select id="jobUrgency">
-                    <option value="Urgent (Within 24 hrs)">Urgent (Within 24 hrs)</option>
-                    <option value="This Week">This Week</option>
-                    <option value="Within 2 Weeks">Within 2 Weeks</option>
-                    <option value="Flexible / Planning Stage">Flexible / Planning Stage</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-2col">
-                <div class="field">
-                  <label for="clientName">Your Full Name</label>
-                  <input type="text" id="clientName" required placeholder="e.g. David Mwangi">
-                </div>
-                <div class="field">
-                  <label for="clientPhone">Phone / WhatsApp (Masked until Unlocked)</label>
-                  <input type="tel" id="clientPhone" required placeholder="+254 7XX XXX XXX">
-                </div>
-              </div>
-
-              <div class="field">
-                <label for="jobDesc">Scope &amp; Key Requirements</label>
-                <textarea id="jobDesc" rows="4" required placeholder="Include deliverables, vehicle make/model, office size, or relevant context so providers can respond with a focused quote..."></textarea>
-              </div>
-
-              <div class="match-preview-box" id="consumerMatchPreview">
-                <strong>Live Match Estimate:</strong> Posting a <strong>KES 25,000</strong> request in <strong>Legal Services</strong> notifies vetted providers accepting jobs at or below your budget.
-              </div>
-
-              <button type="submit" class="btn btn-primary" style="width:100%;">Publish Service Request Free</button>
-            </form>
+            <h3>How It Works</h3>
+            <ul class="check-list" style="margin-top:0.9rem;">
+              <li><strong>KES 0</strong> forever for clients</li>
+              <li>Phone stays masked publicly</li>
+              <li>Only budget-matched pros respond</li>
+              <li>Compare quotes and hire directly</li>
+            </ul>
           </div>
 
-          <!-- Trust & Guidance Sidebar -->
-          <aside style="display:grid;gap:1.25rem;">
-            <div class="panel-card" style="background:var(--br-white);">
-              <h3>What Happens Next?</h3>
-              <p style="font-size:0.86rem;color:var(--br-slate);margin:0 0 1.1rem;">
-                BonnyRigg ensures you only speak with serious service providers aligned to your stated budget.
-              </p>
-
-              <div class="flow-step">
-                <div class="step-badge gold">1</div>
-                <div>
-                  <strong>Instant Price-Band Filtering</strong>
-                  <span>Only providers whose minimum job budget is at or below yours receive an alert.</span>
-                </div>
-              </div>
-
-              <div class="flow-step">
-                <div class="step-badge gold">2</div>
-                <div>
-                  <strong>Wallet-Backed Verification</strong>
-                  <span>Interested providers pay KES 200 via M-Pesa wallet to unlock your contact—filtering out spam.</span>
-                </div>
-              </div>
-
-              <div class="flow-step" style="margin-bottom:0;">
-                <div class="step-badge gold">3</div>
-                <div>
-                  <strong>Compare Quotes &amp; Hire Directly</strong>
-                  <span>Review responses via phone or WhatsApp and hire directly with zero platform commission.</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="panel-card" style="background:linear-gradient(135deg, var(--br-blue-deep), var(--br-blue));color:#fff;border:0;">
-              <h3 style="color:var(--br-gold);">Tips for Faster Responses</h3>
-              <ul class="check-list" style="color:rgba(255,255,255,0.88);">
-                <li>State your estate, road, or town clearly (e.g. Westlands, Ruaka, Kilimani).</li>
-                <li>Set a realistic KES budget inclusive of labour and key materials where applicable.</li>
-                <li>Indicate whether you need an urgent same-day visit or a formal written quotation.</li>
-              </ul>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- Client FAQ -->
-    <section class="band white">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <span class="eyebrow-light">Client Questions</span>
-            <h2>Frequently Asked Questions for Clients</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Who sees my phone number?</summary>
+              <div class="faq-body">Only vetted providers who accept your budget and pay KES 200 to unlock your request.</div>
+            </details>
+            <details class="faq-item">
+              <summary>Are there any client fees?</summary>
+              <div class="faq-body">No. Posting requests and hiring providers is always KES 0.</div>
+            </details>
           </div>
-          <p>Everything you need to know about posting jobs and protecting your privacy on BonnyRigg.</p>
-        </div>
-
-        <div class="faq-list">
-          <details class="faq-item" open>
-            <summary>Is it really free for the general public to post a job?</summary>
-            <div class="faq-body">Yes. Clients pay KES 0 to post requests, receive quotes, and hire service providers. BonnyRigg is funded solely by verified service providers paying KES 200 from their M-Pesa wallet when they unlock a matched lead.</div>
-          </details>
-          <details class="faq-item">
-            <summary>Who can see my phone number after I submit?</summary>
-            <div class="faq-body">Your phone number is masked on the public marketplace. Only vetted providers who operate in your service category, accept your stated budget, and commit KES 200 to unlock your request can view your contact details.</div>
-          </details>
-          <details class="faq-item">
-            <summary>Am I obligated to hire the first provider who calls me?</summary>
-            <div class="faq-body">Not at all. You remain in complete control to compare qualifications, quotations, and timelines, and choose the provider who best fits your needs.</div>
-          </details>
-        </div>
+        </aside>
       </div>
     </section>
   </main>
@@ -251,29 +176,28 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:46px;width:auto;margin-bottom:0.9rem;">
-          <p style="font-size:0.85rem;margin:0;color:rgba(255,255,255,0.76);">
-            Kenya’s price-matched two-sided lead generation marketplace—connecting vetted business service providers with ready-to-hire clients via M-Pesa wallets.
+          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:42px;width:auto;margin-bottom:0.8rem;">
+          <p style="font-size:0.84rem;margin:0;color:rgba(255,255,255,0.74);max-width:34ch;">
+            Kenya's price-matched lead marketplace powered by M-Pesa wallets.
           </p>
         </div>
 
         <div>
           <h4>Marketplace</h4>
           <ul>
-            <li><a href="post-job.html">Post a Service Request</a></li>
-            <li><a href="provider-portal.html">Service Provider Portal</a></li>
-            <li><a href="services.html">Service Categories</a></li>
-            <li><a href="pricing.html">Pricing &amp; ROI Calculator</a></li>
+            <li><a href="post-job.html">Post a Job</a></li>
+            <li><a href="provider-portal.html">Provider Login</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="how-it-works.html">How Matching Works</a></li>
-            <li><a href="about.html">About BonnyRigg</a></li>
-            <li><a href="contact.html">Contact &amp; Support</a></li>
-            <li><a href="pricing.html#faq">Wallet &amp; Billing FAQ</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
@@ -283,14 +207,13 @@
             <li>Nairobi, Kenya</li>
             <li>info@bonnyrigg.co.ke</li>
             <li>www.bonnyrigg.co.ke</li>
-            <li>M-Pesa Paybill · Mon–Sat 8am–6pm</li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 BonnyRigg Business Solutions. All rights reserved.</span>
-        <span>Nairobi, Kenya · Strategy · Solutions · Growth · Impact</span>
+        <span>&copy; 2026 BonnyRigg Business Solutions</span>
+        <span>Nairobi, Kenya</span>
       </div>
     </div>
   </footer>

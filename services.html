@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Service Categories Directory — BonnyRigg Business Solutions</title>
-  <meta name="description" content="Explore vetted Kenyan service categories across Legal, Auto Mechanics, Accounting & Tax, Plumbing & Electrical, Business Advisory, Construction, IT Systems, and Events.">
+  <title>Service Categories | BonnyRigg Business Solutions</title>
+  <meta name="description" content="Explore 8 Kenyan service categories matched to your budget: Legal, Auto Mechanic, Accounting, Plumbing, Consulting, Construction, IT, and Events.">
   <link rel="icon" type="image/svg+xml" href="assets/bonnyrigg-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,19 +13,9 @@
 </head>
 <body>
 
-  <div class="top-notice">
-    <div class="container">
-      <div class="notice-badge">
-        <span class="pulse-dot"></span>
-        <span>8 High-Demand Kenyan Service Verticals · Transparent KES Budget Matching</span>
-      </div>
-      <span>Join from KES 600 · KES 200 per qualified lead · Nairobi, Kenya</span>
-    </div>
-  </div>
-
   <header class="navbar">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions Home">
+      <a href="index.html" class="nav-logo" aria-label="BonnyRigg Business Solutions">
         <img src="assets/bonnyrigg-logo-primary.svg" alt="BonnyRigg Business Solutions">
       </a>
 
@@ -40,7 +30,7 @@
 
       <div class="nav-actions">
         <a href="post-job.html" class="btn btn-outline">Post a Job</a>
-        <a href="provider-portal.html" class="btn btn-gold">Provider Portal</a>
+        <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
       </div>
 
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -56,15 +46,15 @@
       <div class="container">
         <nav class="mobile-nav-links" aria-label="Mobile Navigation">
           <a href="index.html">Home</a>
-          <a href="services.html" class="active">Services Directory</a>
+          <a href="services.html" class="active">Services</a>
           <a href="how-it-works.html">How It Works</a>
-          <a href="pricing.html">Pricing &amp; Wallets</a>
-          <a href="about.html">About BonnyRigg</a>
-          <a href="contact.html">Contact Support</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
         </nav>
         <div class="mobile-nav-actions">
-          <a href="post-job.html" class="btn btn-outline">Post a Service Request (Free)</a>
-          <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal &amp; Wallet</a>
+          <a href="post-job.html" class="btn btn-outline">Post a Job</a>
+          <a href="provider-portal.html" class="btn btn-gold">Provider Login</a>
         </div>
       </div>
     </div>
@@ -72,40 +62,29 @@
 
   <main>
     <section class="page-hero">
-      <div class="container page-hero-grid">
-        <div>
-          <div class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span>/</span>
-            <span>Services Directory</span>
-          </div>
-          <div class="eyebrow">Kenya Service Verticals</div>
-          <h1>Explore Categories Built for <span>Budget-Matched Hiring.</span></h1>
-          <p class="page-hero-lead">
-            Select a vertical to post a free client request with pre-filled budget guidance, or jump straight into the Provider Portal to inspect open leads in your field.
-          </p>
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <span>Services</span>
         </div>
-        <div class="hero-summary-card">
-          <strong>Don’t See Your Niche?</strong>
-          <p>Post under the closest primary category or reach out to our Nairobi onboarding desk to register a specialized B2B or domestic service vertical.</p>
-          <a href="contact.html" class="btn btn-gold btn-sm" style="margin-top:0.8rem;">Request a Vertical</a>
-        </div>
+        <h1>Service <span>Categories.</span></h1>
+        <p class="page-hero-lead">Pick a vertical to post free or view matched provider demand.</p>
       </div>
     </section>
 
     <section class="band">
       <div class="container">
-        <!-- Search & Group Filters -->
         <div class="filter-bar">
           <div class="pill-tabs" role="tablist" aria-label="Category Group Filter">
-            <button type="button" class="pill-tab service-group-btn active" data-group="all">All Verticals (8)</button>
-            <button type="button" class="pill-tab service-group-btn" data-group="professional">Professional &amp; B2B</button>
-            <button type="button" class="pill-tab service-group-btn" data-group="technical">Trades, Auto &amp; Property</button>
+            <button type="button" class="pill-tab service-group-btn active" data-group="all">All (8)</button>
+            <button type="button" class="pill-tab service-group-btn" data-group="professional">Professional</button>
+            <button type="button" class="pill-tab service-group-btn" data-group="technical">Trades &amp; Auto</button>
             <button type="button" class="pill-tab service-group-btn" data-group="digital">Digital &amp; Events</button>
           </div>
 
-          <div class="field" style="min-width:240px;flex:1;max-width:340px;">
-            <input type="search" id="serviceSearch" placeholder="Search legal, mechanic, solar, tax…" aria-label="Search service categories">
+          <div class="field" style="min-width:230px;flex:1;max-width:300px;">
+            <input type="search" id="serviceSearch" placeholder="Search legal, solar, tax…" aria-label="Search service categories">
           </div>
         </div>
 
@@ -114,23 +93,19 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">LS</div>
-                <span class="cat-badge" data-cat-count="Legal Services">1 open request</span>
+                <span class="cat-badge" data-cat-count="Legal Services">1 open</span>
               </div>
               <h3>Legal Services</h3>
-              <p>Practising advocates and legal consultants for SMEs, property buyers, and individuals across Kenya.</p>
+              <div class="cat-budget-line">KES 15,000 – 120,000</div>
               <ul class="cat-examples">
-                <li>Land Conveyancing</li>
-                <li>Commercial Leases</li>
-                <li>Company Incorporation</li>
-                <li>Employment Contracts</li>
+                <li>Conveyancing</li>
+                <li>Leases</li>
+                <li>Contracts</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 15,000 – KES 120,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=Legal%20Services" class="btn btn-primary btn-sm" style="flex:1;">Post Legal Job</a>
-                <a href="provider-portal.html?category=Legal%20Services" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=Legal%20Services" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=Legal%20Services" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
 
@@ -138,23 +113,19 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">AM</div>
-                <span class="cat-badge" data-cat-count="Auto Mechanic">2 open requests</span>
+                <span class="cat-badge" data-cat-count="Auto Mechanic">2 open</span>
               </div>
               <h3>Auto Mechanic &amp; Fleet</h3>
-              <p>Diagnostic specialists, transmission mechanics, bodywork garages, and corporate fleet service providers.</p>
+              <div class="cat-budget-line">KES 6,000 – 65,000</div>
               <ul class="cat-examples">
-                <li>Gearbox &amp; Engine Repair</li>
-                <li>Pre-Purchase Inspection</li>
-                <li>Routine Servicing</li>
-                <li>Fleet Maintenance</li>
+                <li>Gearbox</li>
+                <li>Diagnostics</li>
+                <li>Fleet Care</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 6,000 – KES 65,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=Auto%20Mechanic" class="btn btn-primary btn-sm" style="flex:1;">Post Auto Job</a>
-                <a href="provider-portal.html?category=Auto%20Mechanic" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=Auto%20Mechanic" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=Auto%20Mechanic" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
 
@@ -162,23 +133,19 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">AT</div>
-                <span class="cat-badge" data-cat-count="Accounting & Tax">1 open request</span>
+                <span class="cat-badge" data-cat-count="Accounting & Tax">1 open</span>
               </div>
               <h3>Accounting &amp; Tax</h3>
-              <p>Certified Public Accountants (CPA-K) and tax practitioners handling compliance, audits, and bookkeeping.</p>
+              <div class="cat-budget-line">KES 12,000 – 85,000</div>
               <ul class="cat-examples">
-                <li>KRA Tax Filing</li>
-                <li>eTIMS Onboarding</li>
-                <li>Payroll &amp; PAYE</li>
-                <li>Audited Accounts</li>
+                <li>KRA &amp; eTIMS</li>
+                <li>Payroll</li>
+                <li>Audits</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 12,000 – KES 85,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=Accounting%20%26%20Tax" class="btn btn-primary btn-sm" style="flex:1;">Post Tax Job</a>
-                <a href="provider-portal.html?category=Accounting%20%26%20Tax" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=Accounting%20%26%20Tax" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=Accounting%20%26%20Tax" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
 
@@ -186,23 +153,19 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">PE</div>
-                <span class="cat-badge" data-cat-count="Plumbing & Electrical">1 open request</span>
+                <span class="cat-badge" data-cat-count="Plumbing & Electrical">1 open</span>
               </div>
               <h3>Plumbing &amp; Electrical</h3>
-              <p>Licensed electricians, solar installers, and master plumbers serving residential estates and commercial premises.</p>
+              <div class="cat-budget-line">KES 5,000 – 50,000</div>
               <ul class="cat-examples">
-                <li>Solar Water Heaters</li>
-                <li>Backup Inverters</li>
-                <li>Pipe Re-Routing</li>
-                <li>Commercial Wiring</li>
+                <li>Solar Heaters</li>
+                <li>Inverters</li>
+                <li>Wiring</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 5,000 – KES 50,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=Plumbing%20%26%20Electrical" class="btn btn-primary btn-sm" style="flex:1;">Post Repair Job</a>
-                <a href="provider-portal.html?category=Plumbing%20%26%20Electrical" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=Plumbing%20%26%20Electrical" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=Plumbing%20%26%20Electrical" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
 
@@ -210,23 +173,19 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">BC</div>
-                <span class="cat-badge" data-cat-count="Business Consulting">1 open request</span>
+                <span class="cat-badge" data-cat-count="Business Consulting">1 open</span>
               </div>
               <h3>Business &amp; HR Advisory</h3>
-              <p>Commercial strategists, sales trainers, HR compliance advisors, and executive recruitment consultants.</p>
+              <div class="cat-budget-line">KES 25,000 – 150,000</div>
               <ul class="cat-examples">
-                <li>Sales Team Training</li>
-                <li>HR Policies &amp; Handbooks</li>
-                <li>Strategic Plans</li>
-                <li>SME Recruitment</li>
+                <li>Sales Training</li>
+                <li>HR Policy</li>
+                <li>Strategy</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 25,000 – KES 150,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=Business%20Consulting" class="btn btn-primary btn-sm" style="flex:1;">Post Advisory Job</a>
-                <a href="provider-portal.html?category=Business%20Consulting" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=Business%20Consulting" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=Business%20Consulting" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
 
@@ -234,23 +193,19 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">CR</div>
-                <span class="cat-badge" data-cat-count="Construction & Renovations">1 open request</span>
+                <span class="cat-badge" data-cat-count="Construction & Renovations">1 open</span>
               </div>
               <h3>Construction &amp; Renovations</h3>
-              <p>Interior fit-out contractors, quantity surveyors, gypsum &amp; painting crews, and property maintenance firms.</p>
+              <div class="cat-budget-line">KES 30,000 – 450,000</div>
               <ul class="cat-examples">
-                <li>Office Partitioning</li>
-                <li>Kitchen Remodels</li>
-                <li>Roofing &amp; Waterproofing</li>
-                <li>Interior Painting</li>
+                <li>Fit-Outs</li>
+                <li>Gypsum</li>
+                <li>Painting</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 30,000 – KES 450,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=Construction%20%26%20Renovations" class="btn btn-primary btn-sm" style="flex:1;">Post Project</a>
-                <a href="provider-portal.html?category=Construction%20%26%20Renovations" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=Construction%20%26%20Renovations" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=Construction%20%26%20Renovations" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
 
@@ -258,23 +213,19 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">IT</div>
-                <span class="cat-badge" data-cat-count="IT & Digital Systems">1 open request</span>
+                <span class="cat-badge" data-cat-count="IT & Digital Systems">1 open</span>
               </div>
               <h3>IT &amp; Digital Systems</h3>
-              <p>POS &amp; M-Pesa integrators, office networking engineers, CCTV installers, and SME web developers.</p>
+              <div class="cat-budget-line">KES 15,000 – 120,000</div>
               <ul class="cat-examples">
-                <li>M-Pesa POS Setup</li>
-                <li>CCTV &amp; Biometrics</li>
-                <li>Business Websites</li>
-                <li>Office Networking</li>
+                <li>M-Pesa POS</li>
+                <li>CCTV</li>
+                <li>Websites</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 15,000 – KES 120,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=IT%20%26%20Digital%20Systems" class="btn btn-primary btn-sm" style="flex:1;">Post IT Job</a>
-                <a href="provider-portal.html?category=IT%20%26%20Digital%20Systems" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=IT%20%26%20Digital%20Systems" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=IT%20%26%20Digital%20Systems" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
 
@@ -282,45 +233,26 @@
             <div>
               <div class="cat-card-top">
                 <div class="cat-icon">EL</div>
-                <span class="cat-badge" data-cat-count="Events & Logistics">1 open request</span>
+                <span class="cat-badge" data-cat-count="Events & Logistics">1 open</span>
               </div>
               <h3>Events &amp; Logistics</h3>
-              <p>Corporate catering, conference AV setups, commercial office movers, and courier/transport contractors.</p>
+              <div class="cat-budget-line">KES 10,000 – 180,000</div>
               <ul class="cat-examples">
-                <li>Corporate Catering</li>
-                <li>PA &amp; AV Production</li>
-                <li>Office Relocation</li>
-                <li>Event Tents &amp; Decor</li>
+                <li>Catering</li>
+                <li>AV &amp; PA</li>
+                <li>Relocation</li>
               </ul>
             </div>
-            <div>
-              <div class="cat-budget-line">Typical budgets: KES 10,000 – KES 180,000</div>
-              <div class="cat-actions" style="margin-top:0.75rem;">
-                <a href="post-job.html?category=Events%20%26%20Logistics" class="btn btn-primary btn-sm" style="flex:1;">Post Event Job</a>
-                <a href="provider-portal.html?category=Events%20%26%20Logistics" class="btn btn-ghost btn-sm">View Leads</a>
-              </div>
+            <div class="cat-actions">
+              <a href="post-job.html?category=Events%20%26%20Logistics" class="btn btn-primary btn-sm" style="flex:1;">Post Job</a>
+              <a href="provider-portal.html?category=Events%20%26%20Logistics" class="btn btn-ghost btn-sm">Leads</a>
             </div>
           </article>
         </div>
 
         <div id="serviceEmptyNote" class="panel-card" style="display:none;text-align:center;margin-top:1.5rem;">
-          <p style="margin:0 0 0.8rem;color:var(--br-slate);">No categories matched your search keyword. You can still post your custom service request directly.</p>
-          <a href="post-job.html" class="btn btn-primary btn-sm">Post Custom Request Free</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="band white">
-      <div class="container">
-        <div class="cta-banner">
-          <div>
-            <h2>Are You a Qualified Kenyan Service Provider?</h2>
-            <p>Activate your M-Pesa lead wallet with KES 600, pick your category and minimum price floor, and start receiving matched client opportunities today.</p>
-          </div>
-          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-            <a href="provider-portal.html" class="btn btn-gold">Open Provider Portal</a>
-            <a href="pricing.html" class="btn btn-outline-light">View Lead Pricing</a>
-          </div>
+          <p style="margin:0 0 0.85rem;color:var(--br-slate);">No categories matched.</p>
+          <a href="post-job.html" class="btn btn-primary btn-sm">Post Custom Job</a>
         </div>
       </div>
     </section>
@@ -330,29 +262,28 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:46px;width:auto;margin-bottom:0.9rem;">
-          <p style="font-size:0.85rem;margin:0;color:rgba(255,255,255,0.76);">
-            Kenya’s price-matched two-sided lead generation marketplace—connecting vetted business service providers with ready-to-hire clients via M-Pesa wallets.
+          <img src="assets/bonnyrigg-logo-reverse.svg" alt="BonnyRigg Business Solutions" style="height:42px;width:auto;margin-bottom:0.8rem;">
+          <p style="font-size:0.84rem;margin:0;color:rgba(255,255,255,0.74);max-width:34ch;">
+            Kenya's price-matched lead marketplace powered by M-Pesa wallets.
           </p>
         </div>
 
         <div>
           <h4>Marketplace</h4>
           <ul>
-            <li><a href="post-job.html">Post a Service Request</a></li>
-            <li><a href="provider-portal.html">Service Provider Portal</a></li>
-            <li><a href="services.html">Service Categories</a></li>
-            <li><a href="pricing.html">Pricing &amp; ROI Calculator</a></li>
+            <li><a href="post-job.html">Post a Job</a></li>
+            <li><a href="provider-portal.html">Provider Login</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
           </ul>
         </div>
 
         <div>
           <h4>Company</h4>
           <ul>
-            <li><a href="how-it-works.html">How Matching Works</a></li>
-            <li><a href="about.html">About BonnyRigg</a></li>
-            <li><a href="contact.html">Contact &amp; Support</a></li>
-            <li><a href="pricing.html#faq">Wallet &amp; Billing FAQ</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
 
@@ -362,14 +293,13 @@
             <li>Nairobi, Kenya</li>
             <li>info@bonnyrigg.co.ke</li>
             <li>www.bonnyrigg.co.ke</li>
-            <li>M-Pesa Paybill · Mon–Sat 8am–6pm</li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 BonnyRigg Business Solutions. All rights reserved.</span>
-        <span>Nairobi, Kenya · Strategy · Solutions · Growth · Impact</span>
+        <span>&copy; 2026 BonnyRigg Business Solutions</span>
+        <span>Nairobi, Kenya</span>
       </div>
     </div>
   </footer>
